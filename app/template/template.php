@@ -1,0 +1,120 @@
+<?php
+session_start();
+
+// Check if the user is logged into the intranet
+if (!isset($_SESSION["uid"]) || !is_numeric($_SESSION["uid"])) {
+    //header("Location: https://" . $_SERVER["SERVER_NAME"] . "/sass/index.php?xaction=timeout");
+}
+
+header('Content-Type: text/html; charset=utf-8');
+// ob_start('ob_gzhandler');
+
+header('Content-Language: en-CA');
+
+include 'table.php';
+?>
+<!DOCTYPE html>
+<html lang='en-CA'>
+    <head>
+        <meta charset='utf-8'> 
+        <title>Indicium - <?= $page_title; ?></title>
+
+        <link rel="stylesheet" media="screen" type="text/css" href="//ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">
+        <link rel="stylesheet" media="screen" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/chosen/0.9.14/chosen.min.css">
+        <link rel="stylesheet" media="screen" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/jquery-powertip/1.2.0/css/jquery.powertip-blue.min.css">
+        <!-- <link type="text/css" href="../../cometchat/cometchatcss.php" rel="stylesheet" charset="utf-8"> -->
+        <link rel="stylesheet" href="../../css/gumby.css">
+        <link rel="stylesheet" href="../../css/style.css">
+        <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.4.4/jquery-editable/css/jquery-editable.css" rel="stylesheet">
+
+        <script src="../../js/libs/modernizr-2.6.2.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js" charset="utf-8"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-migrate/1.2.1/jquery-migrate.js" charset="utf-8"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js" charset="utf-8"></script>
+        <script src="//ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js" charset="utf-8"></script>
+        <!--[if lte IE 8]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js" charset=utf-8></script><![endif]-->
+        <script src='//cdnjs.cloudflare.com/ajax/libs/chosen/0.9.14/chosen.jquery.min.js' charset="utf-8"></script>
+        <script src='//cdnjs.cloudflare.com/ajax/libs/jquery-powertip/1.2.0/jquery.powertip.min.js' charset="utf-8"></script>
+        <script src="//cdn.jsdelivr.net/cleditor/1.3.0/jquery.cleditor.min.js" charset="utf-8"></script>
+        <script src="../../js/gumby.min.js"></script>
+         <script src="../../js/libs/spin.js"></script>
+        <script src="../../js/plugins.js"></script>
+        <script src="../../js/global.js"></script>
+        <script src="../../js/template.js"></script>
+        <script src="../../js/<?= $js_path ?>"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.4.4/jquery-editable/js/jquery-editable-poshytip.min.js"></script>
+        <!-- <script async src="../../../cometchat/cometchatjs.php" charset="utf-8"></script> -->
+        <script src="../../jscolor/jscolor.js"></script>
+    </head>
+    <body>
+        <header class="container header">
+            <div class="row">
+                <img src="../../img/mis_indicium_logo_dark.png">
+            </div>
+            <div id="message">
+                <p class="success alert"></p>
+            </div>
+        </header>
+        <div class="container navbar">
+            <div class="row">
+                <a class="toggle" gumby-trigger="#nav1 > .row > ul" href="#"><i class="icon-menu"></i></a>
+                <ul class="twelve columns">
+                    <li><a href="../cpu/">Computers</a></li>
+                    <li><a href="../mon/">Monitors</a></li>
+                    <li><a href="../per/">Peripherals</a></li>
+                    <li><a href="../software/">Software</a></li>
+                    <li><a href="../furniture/">Furniture</a></li>
+                    <li><a href="../key/">Keys</a></li>
+                    <li><a href="../tag/">Tags</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container content">
+            <div class="row">
+                <div class="eight columns" id="left-panel">
+                    <div class="row">
+                        <div class="five columns">
+                            <h2 id="pageTitle"><i class="<?= $icon ?>"></i> <?= $page_title; ?></h2>
+                            <h2 id="pageSuffix"></h2>
+                        </div>
+                        <div class="seven columns" style="text-align: right; padding-top: 20px;">
+                            <div class="medium btn primary metro" id="compare"><a href="#"><i class="icon-doc-text"></i>Compare</a></div>
+                            <div class="medium btn secondary metro" id="add-btn"><a href="#"><i class="icon-plus-squared"></i>Add <?= $page_title; ?></a></div>
+                        <!-- Options Dropdown -->
+                            <div class="medium btn default metro one column" id="options" style="float: right;">
+                                <i class="icon-cog"></i>
+                                <div id="hiddenDD">
+                                    <div class="medium btn default metro twelve columns"><a href="index.php?page=csv">Export to Excel</a></div>
+                                    <?php if(isset($discard_url)) { ?>
+                                        <div><a href=<?= $discard_url; ?> class="medium btn default metro twelve columns" id="discard-btn"><?= $discard_variable; ?> Discarded</a></div>
+                                    <?php } ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <table id="mainTable">
+                            <?php generateTable($data, $equip); ?>
+                        </table>
+                    </div>
+                </div>
+                <div class="four columns" id="oriCard">
+                    <?php generateCard(array(), $lists, $icon); ?>
+                    <div id="overlay">
+                        <!-- gray out div for loading cards -->
+                    </div>
+                </div>        
+            </div>
+        </div>
+        <div id="bigD">
+            <div id="compareCards">
+                <!-- space for card comparing -->
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <footer>Designed &amp; Developed by Student Academic Success Service, <?= date('Y'); ?>.</footer>
+            </div>
+        </div>
+    </body>
+</html>
