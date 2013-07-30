@@ -9,23 +9,14 @@ ini_set('display_errors', '1');
 // Control the flow of the application
 //============================================================================================
 if (!isset($_GET['page'])) {
-    // //Is the user within the available zone?
+    // Is the user within the available zone?
     // $visitIP = explode('.', $_SERVER['HTTP_X_FORWARDED_FOR']);
     // if ($visitIP[0] . '.' . $visitIP[1] !== "137.122") {
-        // die('<div style="text-align:center; font-size:1.5em; font-family: Segoe UI, Arial; margin-top: 2em;">Indicium is accessible only on campus at uOttawa. If you are off-campus, you may VPN in to the universities network.</div>');
+    //      die('<div style="text-align:center; font-size:1.5em; font-family: Segoe UI, Arial; margin-top: 2em;">Career Fairs is accessible only on campus at uOttawa. If you are off-campus, you may VPN in to the universities network.</div>');
     // }
-// 
-    // header('Location: https://' . $_SERVER["SERVER_NAME"] . $_SERVER['REQUEST_URI'] . 'app/cpu/');
+    // header('Location: https://' . $_SERVER["SERVER_NAME"] . $_SERVER['REQUEST_URI'] . 'app/employer/');
 
-    //Is the user within the available zone?
-    // $visitIP = explode('.', $_SERVER['HTTP_X_FORWARDED_FOR']);
-    // if ($visitIP[0] . '.' . $visitIP[1] !== "137.122") {
-    //     die('<div style="text-align:center; font-size:1.5em; font-family: Segoe UI, Arial; margin-top: 2em;">Indicium is accessible only on campus at uOttawa. If you are off-campus, you may VPN in to the universities network.</div>');
-    // }
-
-    // header('Location: https://' . $_SERVER["SERVER_NAME"] . $_SERVER['REQUEST_URI'] . 'mis/');
-
-    header('Location:app/cpu/');
+    header('Location:app/employer/');
     
 } else if ($_GET['page'] === "unauthorized") {
 
