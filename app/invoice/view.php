@@ -4,7 +4,6 @@ function generateTable($data, $equip) {
 ?>
 <thead>
     <th>Name</th>
-    <th>Department</th>
 </thead>
 <tbody>
     <?php 
@@ -18,13 +17,11 @@ function generateTable($data, $equip) {
 }
 
 function generateRow($r) {?>
-    <td itemprop="org_name"><p><?= htmlspecialchars($r['org_name_en']) . "<br/>" . htmlspecialchars($r['org_name_fr']); ?></p></td>
-    <td itemprop="dep_name"><p><?= htmlspecialchars($r['dep_name_en']) . "<br/>" . htmlspecialchars($r['dep_name_fr']); ?></p>
-        
+    <td itemprop="" data-emp-id="<?= $r['id'] ?>"><p><?= htmlspecialchars($r['']) . "<br/>" . htmlspecialchars($r['']); ?></p></td>
+         
         <!-- Metadata -->
         <div style="display: none">
-            <p itemprop="website_en"><?= htmlspecialchars($r['website_en']) ?></p>
-            <p itemprop="website_fr"><?= htmlspecialchars($r['website_fr']) ?></p>
+            <p itemprop=""><?= htmlspecialchars($r['']) ?></p>
         </div>
     </td>
 <?php } 

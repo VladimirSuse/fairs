@@ -11,16 +11,16 @@ ini_set('display_errors', '1');
 require_once '../../includes/Employer.php';
 $employer = new Employer();
 
-$page_title = 'Employers';
-$icon = "icon-user";
-$js_path = "employer.js";
+$page_title = 'Services';
+$icon = "icon-list";
+$js_path = "service.js";
 
 //============================================================================================
 // Load the page requested by the user
 //============================================================================================
 
 if (!isset($_GET['page'])) {
-    $data = $employer -> getAllEmployer();
+    $data = $employer -> getService();
     require_once '../template/template.php';
 } elseif ($_GET['page'] == "card") {
 	# code...

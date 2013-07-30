@@ -17,7 +17,7 @@ include 'view.php';
 <html lang='en-CA'>
     <head>
         <meta charset='utf-8'> 
-        <title>Career Fairs <?= $page_title; ?></title>
+        <title>Career Fairs - <?= $page_title; ?></title>
 
         <link rel="stylesheet" media="screen" type="text/css" href="//ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">
         <link rel="stylesheet" media="screen" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/chosen/0.9.14/chosen.min.css">

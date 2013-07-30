@@ -4,7 +4,7 @@ function generateTable($data, $equip) {
 ?>
 <thead>
     <th>Name</th>
-    <th>Department</th>
+    <th>Start/End</th>
 </thead>
 <tbody>
     <?php 
@@ -18,13 +18,14 @@ function generateTable($data, $equip) {
 }
 
 function generateRow($r) {?>
-    <td itemprop="org_name"><p><?= htmlspecialchars($r['org_name_en']) . "<br/>" . htmlspecialchars($r['org_name_fr']); ?></p></td>
-    <td itemprop="dep_name"><p><?= htmlspecialchars($r['dep_name_en']) . "<br/>" . htmlspecialchars($r['dep_name_fr']); ?></p>
+    <td itemprop="event_name"><p><?= htmlspecialchars($r['name_en']) . "<br/>" . htmlspecialchars($r['name_fr']); ?></p></td>
+    <td itemprop="start_end_date"><p><?= htmlspecialchars($r['start_date']) . "<br/>" . htmlspecialchars($r['end_date']); ?></p>
         
         <!-- Metadata -->
         <div style="display: none">
+            <p itemprop="event_location"><?= htmlspecialchars($r['location_en']) . "<br/>" . htmlspecialchars($r['location_fr']); ?></p>
             <p itemprop="website_en"><?= htmlspecialchars($r['website_en']) ?></p>
-            <p itemprop="website_fr"><?= htmlspecialchars($r['website_fr']) ?></p>
+            <p itemprop="website_fr"><?= htmlspecialchars($r['website_fr']) ?></p> 
         </div>
     </td>
 <?php } 

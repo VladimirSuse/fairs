@@ -43,7 +43,6 @@ td[itemprop$=purchased] {
 
 td p {
     margin: 0;
-    max-width: 20em;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -154,6 +153,7 @@ form fieldset {
 #mainTable {
     border-bottom: 1px SOLID #888;
     width: 100%;
+    opacity: 0;
 }
 
 #mainTable_length {

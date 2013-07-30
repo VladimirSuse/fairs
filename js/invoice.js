@@ -4,7 +4,7 @@ function initializePage() {
 
     $('#mainTable').dataTable({
         "iDisplayLength": 25,
-        "aaSorting": [[0, "asc"]],
+        "aaSorting": [[4, "asc"]],
         "aLengthMenu":[
             [25, 50, 100, -1],
             [25, 50, 100, "All"]

@@ -4,7 +4,7 @@ function generateTable($data, $equip) {
 ?>
 <thead>
     <th>Name</th>
-    <th>Department</th>
+    <th>Price</th>
 </thead>
 <tbody>
     <?php 
@@ -18,15 +18,9 @@ function generateTable($data, $equip) {
 }
 
 function generateRow($r) {?>
-    <td itemprop="org_name"><p><?= htmlspecialchars($r['org_name_en']) . "<br/>" . htmlspecialchars($r['org_name_fr']); ?></p></td>
-    <td itemprop="dep_name"><p><?= htmlspecialchars($r['dep_name_en']) . "<br/>" . htmlspecialchars($r['dep_name_fr']); ?></p>
-        
-        <!-- Metadata -->
-        <div style="display: none">
-            <p itemprop="website_en"><?= htmlspecialchars($r['website_en']) ?></p>
-            <p itemprop="website_fr"><?= htmlspecialchars($r['website_fr']) ?></p>
-        </div>
-    </td>
+    <td itemprop="service_name"><p><?= htmlspecialchars($r['name_en']) . "<br/>" . htmlspecialchars($r['name_fr']); ?></p></td>
+    <td itemprop="price"><p><?= htmlspecialchars($r['price']); ?></p></td>
+
 <?php } 
 
 function generateCard() {

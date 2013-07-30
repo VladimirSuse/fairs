@@ -11,16 +11,16 @@ ini_set('display_errors', '1');
 require_once '../../includes/Employer.php';
 $employer = new Employer();
 
-$page_title = 'Employers';
-$icon = "icon-user";
-$js_path = "employer.js";
+$page_title = 'Invoices';
+$icon = "icon-doc-text";
+$js_path = "invoice.js";
 
 //============================================================================================
 // Load the page requested by the user
 //============================================================================================
 
 if (!isset($_GET['page'])) {
-    $data = $employer -> getAllEmployer();
+    $data = $employer -> getInvoice();
     require_once '../template/template.php';
 } elseif ($_GET['page'] == "card") {
 	# code...

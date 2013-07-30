@@ -4,6 +4,8 @@ $(function() {
 	initializePage();
 	keyNav();
 
+    $("#mainTable").animate({opacity: "1"}, 1000);
+
 	$('.buttonset').buttonset();
 
 	$(document).on('mouseenter', '#mainTable tr', function() {
