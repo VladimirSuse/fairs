@@ -8,10 +8,10 @@
 // define('mysql_dbname', 'sass');
 // define('mysql_host', '10.33.32.41');
 // define('mysql_port', 3306);
-define('mysql_username', 'sass');
+define('mysql_username', 'root');
 define('mysql_passwrod', 'pen56nant');
 define('mysql_dbname', 'sass');
-define('mysql_host', 'localhost');
+define('mysql_host', '137.122.185.29');
 define('mysql_port', 3306);
 
 class SyncObject{
