@@ -24,5 +24,5 @@ if (!isset($_GET['page'])) {
 } 
 
 else {
-    require_once '../../includes/php/error.php';
+    require_once '../../includes/error.php';
 }

@@ -50,7 +50,7 @@ include 'view.php';
         </div>
         <div class="container content">
             <div class="row">
-                <div class="eleven columns" id="left-panel">
+                <div class="ten columns" id="left-panel">
                     <div class="row">
                         <div class="seven columns">
                             <h2 id="pageTitle"><i class="<?= $icon ?>"></i> <?= $page_title; ?></h2>
@@ -65,8 +65,8 @@ include 'view.php';
                         </table>
                     </div>
                 </div>
-                <div class="four columns" id="oriCard">
-                    <!-- <?php generateCard(array(), $lists, $icon); ?> -->
+                <div class="six columns" id="oriCard">
+                    <?php generateCard()?> 
                     <div id="overlay">
                         <!-- gray out div for loading cards -->
                     </div>
