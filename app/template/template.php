@@ -11,7 +11,7 @@ header('Content-Type: text/html; charset=utf-8');
 
 header('Content-Language: en-CA');
 
-include 'table.php';
+include 'view.php';
 ?>
 <!DOCTYPE html>
 <html lang='en-CA'>
