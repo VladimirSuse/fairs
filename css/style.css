@@ -154,6 +154,11 @@ form fieldset {
 #mainTable {
     border-bottom: 1px SOLID #888;
     width: 100%;
+    display:none;
+}
+
+.buttonset{
+	display:none;
 }
 
 #mainTable_length {
@@ -267,3 +272,14 @@ form {
     top: 10px;
     z-index:10;
 }
+
+#add-employer{
+	cursor:pointer;
+	margin-top:1em;
+}
+
+.buttonset .ui-button.ui-state-active .ui-button-text {
+    color:white;
+    background-color: rgb(66, 165, 66);
+}
+

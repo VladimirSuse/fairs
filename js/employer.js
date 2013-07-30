@@ -22,6 +22,9 @@ function initializePage() {
         }
         
     });
+    $('#mainTable').fadeIn();
+    $('.buttonset').fadeIn();
+
     $('#mainTable_filter').addClass('field');
     $('#mainTable_filter input').addClass('normal search input');
 
@@ -32,4 +35,17 @@ function initializePage() {
         $('#add-btn').click();
         $('.choose-me').chosen();
     }, 500);
+
+    //listener add employer form submission
+    $('#emp_form').on('submit', function(event){
+        event.preventDefault();
+        $.ajax({
+            type: $('#emp_form').attr('method'),
+            url:"index.php?page=add-edit",
+            data: $('#emp_form').serialize(),
+            success:function(){
+                //TODO
+            }
+        });
+    });
 }
