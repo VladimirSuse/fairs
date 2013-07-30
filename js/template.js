@@ -2,6 +2,9 @@
 $(function() {
 
 	initializePage();
+	keyNav();
+
+	$('.buttonset').buttonset();
 
 	$(document).on('mouseenter', '#mainTable tr', function() {
         if ($(this).attr('data_item_id') != window.selected_row) {
@@ -19,7 +22,7 @@ $(function() {
         }
     });
 
-    keyNav();
+    
 
 });
 
