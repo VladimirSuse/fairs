@@ -99,9 +99,10 @@ function generateCard() {
                     <label for="hst_exempt" class="card-label">HST exempt</label>
                 </div>
                 <div class="seven columns">
-                   <span class="buttonset">
-                      <input type='checkbox' name='hst_exempt' id='hst_exempt' value='1'>
-                    </span>
+                   <div class="buttonset">
+                       <input type='radio' name='hst_exempt' id='hst_exempt-yes' value='1'><label for='hst_exempt-yes'>Yes</label>
+                       <input type='radio' name='hst_exempt' id='hst_exempt-no' checked='checked' value='0'><label for='hst_exempt-no'>No</label>
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -110,10 +111,16 @@ function generateCard() {
                 </div>
                 <div class="seven columns">
                     <div class="buttonset">
-                        <input type='checkbox' name='pst_exempt' id='pst_exempt' value='1'>
+                        <input type='radio' name='pst_exempt' id='pst_exempt-yes' value='1'><label for='pst_exempt-yes'>Yes</label>
+                        <input type='radio' name='pst_exempt' id='pst_exempt-no' checked='checked' value='0'><label for='pst_exempt-no'>No</label>
                     </div>
                 </div>
-            </div>            
+            </div>
+            <div class="row">
+                <div class="sixteen columns text-center">
+                    <div class="medium btn secondary metro" id='add-employer'><input type="submit" value="Save"></div>  
+                </div>          
+            </div>
     </form>
     <?php
 }

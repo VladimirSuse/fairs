@@ -6,7 +6,7 @@ $(function() {
 
     $("#mainTable").animate({opacity: "1"}, 1000);
 
-	$('.buttonset').buttonset();
+	$('.buttonset').buttonset().fadeIn();
 
 	$(document).on('mouseenter', '#mainTable tr', function() {
         if ($(this).attr('data_item_id') != window.selected_row) {
