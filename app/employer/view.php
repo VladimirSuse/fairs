@@ -3,17 +3,14 @@
 function generateTable($data, $equip) {
 ?>
 <thead>
-    <th><div class="small btn default metro" id="checkButton"><a href="javascript: uncheckAll();"><i class="icon-minus"></i></a></div></th>
-    <th>Make</th>
-    <th>Series</th>
-    <th>Serial No.</th>
-    <th>Date Purchased</th>
-    <th>Tags</th>
+    <th>Name</th>
+    <th>Department</th>
+    <th>Website</th>
 </thead>
 <tbody>
     <?php 
     foreach ($data as $r): ?>
-    <tr item_id="<?= $r['cpu_id'] ?>">
+    <tr data_item_id="<?= $r['id'] ?>">
         <?php generateRow($r, $equip); ?>
     </tr>
     <?php endforeach; ?>
@@ -22,28 +19,14 @@ function generateTable($data, $equip) {
 }
 
 function generateRow($r, $equip) {?>
-    <td><input type="checkbox"></td>
-    <td itemprop="cpu_make" data-make-id="<?= $r['make_id'] ?>"><p><?= htmlspecialchars($r['make_name']) ?></p></td>
-    <td itemprop="cpu_mod_series"><p><?= htmlspecialchars($r['cpu_mod_series']) ?></p></td>
-    <td itemprop="cpu_serial"><p><?= htmlspecialchars($r['cpu_serial']) ?></p></td>
-    <td itemprop="cpu_purchased"><p><div class="star" style="color: <?= $r['cpu_rating'] ?>">&#8226;</div><time datetime="<?= date('Y-m-d', strtotime($r['cpu_purchased'])); ?>"><?= date('Y-m-d', strtotime($r['cpu_purchased'])); ?></time></p></td>
-    <td itemprop="tags">
-        <?php
-        $tags = $equip->listTags($r['cpu_id']);
-        if (isset($tags)) {
-            foreach ($tags as $t) {
-                $bgcolour = '(' . $t['tag_colour_r'] . ', ' . $t['tag_colour_g'] . ', ' . $t['tag_colour_b'] . ')';
-                ?>
-                <li class='label' style='background-color: rgb<?= $bgcolour ?>' tag_id="<?= $t['tag_id'] ?>"><?= $t['tag_name_en'] ?></li>
-                <?php
-            }
-        }
-        ?>
-      
+    <td itemprop="org_name" data-emp-id="<?= $r['emp_id'] ?>"><p><?= htmlspecialchars($r['org_name_en']) . "<br/>" . htmlspecialchars($r['org_name_fr']); ?></p></td>
+    <td itemprop="dep_name"><p><?= htmlspecialchars($r['dep_name_en']) . "<br/>" . htmlspecialchars($r['dep_name_fr']); ?></p></td>
+    <td itemprop="website"><p><?= htmlspecialchars($r['website_en']) . "<br/>" . htmlspecialchars($r['website_fr']); ?></p></td>
+
         <!-- Metadata -->
 
         <div style="display: none">
-            <p itemprop="cpu_id_formatted"><?= htmlspecialchars($r['cpu_id_formatted']) ?></p>
+<!--        <p itemprop="cpu_id_formatted"><?= htmlspecialchars($r['cpu_id_formatted']) ?></p>
             <p itemprop="cpu_mod_type"><?= htmlspecialchars($r['cpu_mod_type']) ?></p>
             <p itemprop="cpu_ip_addr"><?= htmlspecialchars($r['ipAddress']) ?></p>
             <p itemprop="cpu_mac_addr"><?= htmlspecialchars($r['cpu_mac_addr']) ?></p>
@@ -55,7 +38,7 @@ function generateRow($r, $equip) {?>
             <p itemprop="cpu_description"><?= htmlspecialchars($r['cpu_description']) ?></p>
             <p itemprop="cpu_purprice"><?= $r['cpu_purprice'] ?></p>
             <p itemprop="status" data-status-id="<?= htmlspecialchars($r['status']) ?>"><?= htmlspecialchars($r['status_name']) ?></p>
-            <p itemprop="updated_on"><?= htmlspecialchars($r['updated_on']) ?></p>
+            <p itemprop="updated_on"><?= htmlspecialchars($r['updated_on']) ?></p> -->
         </div>
     </td>
 <?php } 

@@ -2,3 +2,272 @@
 We highly recommend you use SASS and write your custom styles in sass/_custom.scss.
 However, this blank file is available if you prefer
 */
+
+body {
+    background-color: #DDD;
+    background-image: url('../img/bg-pattern.png');
+}
+
+.navbar {
+    box-shadow: 0px 0px 8px #888;
+    margin-bottom: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.header {
+    padding: 20px 0;
+    background-color: white;
+}
+
+.header h1 {
+    font-weight: 100;
+    font-size: 64px;
+}
+
+.content {
+    padding-top: 10px;
+    padding-bottom: 30px;
+}
+
+table.dataTable thead th {
+    border-bottom: 1px SOLID #888;
+}
+
+td, th {
+    padding: 8px 10px;
+}
+
+td[itemprop$=purchased] {
+    min-width: 10em;
+}
+
+td p {
+    margin: 0;
+    max-width: 20em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+tbody tr:hover {
+    cursor: pointer;
+}
+
+.card {
+    background-color: white;
+    border: 1px SOLID #888;
+    box-shadow: 0px 0px 4px #AAA;
+    left: -150px;
+    display: none;
+    margin-top: 10px;
+    opacity: 0;
+    position: relative;
+}
+
+.card form {
+    margin: 10px;
+}
+
+.card form .btn {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card h1, .card h2, .card h3, .card h4 {
+    margin-bottom: 0px;
+    text-align: center; 
+}
+
+.card h3 {
+    font-weight: 900;
+    margin-top: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+input.card-value, select.card-value, textarea.card-value {
+    -webkit-appearance: none;
+    background-color: transparent;
+    border: none;
+    color: #555;
+    font-family: 'Open Sans';
+    font-size: 16px;
+    line-height: 26px;
+    margin: 0;
+    padding: 5px;
+    resize: none;
+    width: 100%;
+}
+
+.card-label, p.card-value {
+    margin-bottom: 0px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.card-label {
+    border-right: 1px SOLID #DDD;
+    font-weight: bold;
+    padding-right: 5px;
+    text-align: right;
+}
+
+p.card-value {
+    padding-left: 5px;
+}
+
+#item_id {
+    position: relative;
+    z-index: 3;
+}
+
+#updated_on {
+    font-size: 13px;
+    margin-bottom: 0;
+    margin-top: 8px;
+}
+
+footer {
+    font-size: 14px;
+    margin-top: 30px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: center;
+}
+
+.field .wide {
+    width: 65%;
+}
+
+form fieldset {
+    margin: 0;
+}
+
+.btn.metro a {
+    box-shadow: 0px 1px 3px #AAA;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.btn.secondary {
+    background-color: rgb(66, 165, 66);
+}
+
+#mainTable {
+    border-bottom: 1px SOLID #888;
+    width: 100%;
+}
+
+#mainTable_length {
+    margin-top: 5px;
+}
+
+#mainTable_length, #mainTable_filter, #mainTable_info, #mainTable_paginate {
+    float: left;
+    width: 50%;
+}
+
+#mainTable_info {
+    width: 82%;
+}
+
+#mainTable_paginate {
+    width: 18%;
+}
+
+#mainTable_filter, #mainTable_paginate {
+    text-align: right;
+}
+
+#table-card-row {
+    margin-top: 20px;
+}
+
+table.dataTable tr.odd, table.dataTable tr.odd td.sorting_1, table.dataTable tr.even, table.dataTable tr.even td.sorting_1 {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.top-bar {
+    margin-top: 0px;
+    top: 0px;
+    left: 0px;
+    position: absolute;
+}
+
+.top-bar p {
+    background: #555555; /* Old browsers */
+    background: -moz-linear-gradient(top,  #555555 0%, #333333 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#555555), color-stop(100%,#333333)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #555555 0%,#333333 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #555555 0%,#333333 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #555555 0%,#333333 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #555555 0%,#333333 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#555555', endColorstr='#333333',GradientType=0 ); /* IE6-9 */
+
+    border: 1px SOLID white;
+    border-radius: 0 0 8px 0;
+    box-shadow: 1px 1px 1px #CCC;
+    color: #FFF;
+    display: block;
+    float: left;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1em;
+    margin-bottom: 0;
+    padding: 5px 15px;
+    text-align: center;
+    width: auto;
+}
+
+.label {
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+    max-width: 12rem;
+    overflow: hidden;
+    /*text-overflow: ellipsis;*/
+}
+
+#message {
+    opacity: 0.0;
+    position: fixed;
+    right: auto;
+    text-align: center;
+    top: -35px;
+    width: 100%;
+    z-index: 5;
+}
+
+#message p {
+    display: inline;
+    padding: 10px;
+}
+
+#hiddenDD {
+    position: relative;
+    z-index: 5;
+    background-color: #f2f2f2;
+    display: none;
+    width: 10em;
+    right: 7.45em;
+    top: 0.093749em;
+    
+}
+
+form {
+    padding: 10px;
+}
+
+#oriCard {
+    position: relative;
+}
+
+#overlay {
+    background: rgba(0,0,0,0.1);
+    display: none;
+    width: 100%; 
+    position: absolute; 
+    top: 10px;
+    z-index:10;
+}

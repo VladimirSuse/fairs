@@ -13,16 +13,23 @@ $employer = new Employer();
 
 $page_title = 'Employers';
 $icon = "emp";
+$js_path = "employer.js";
 
 //============================================================================================
 // Load the page requested by the user
 //============================================================================================
 
 if (!isset($_GET['page'])) {
-    $employerList = $employer -> getAllEmployer();
+    $data = $employer -> getAllEmployer();
     require_once '../template/template.php';
-} 
-
-else {
+} elseif ($_GET['page'] == "card") {
+	# code...
+} elseif ($_GET['page'] == "edit") {
+	# code...
+} elseif ($_GET['page'] == "add") {
+	# code...
+} elseif ($_GET['page'] == "contact") {
+	# action = add/del or edit
+} else {
     require_once '../../includes/php/error.php';
 }
