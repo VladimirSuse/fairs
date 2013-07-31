@@ -288,3 +288,7 @@ form {
     background-color: #3085d6;
     border: .5px lightgray solid;
 }
+
+#saveRow {
+    margin-top: 1rem;
+}

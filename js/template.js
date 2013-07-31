@@ -24,8 +24,6 @@ $(function() {
         }
     });
 
-    
-
 });
 
 function keyNav() {
@@ -62,4 +60,15 @@ function highlightSelectedRow() {
     $('tr').css('color', '#555');
     $('tr[data_item_id=' + window.selected_row + ']').css('background-color', 'rgb(66, 165, 66)');
     $('tr[data_item_id=' + window.selected_row + ']').css('color', 'rgb(255, 255, 255)');
+}
+
+function clearForm() {
+    $('.card-value').val('');
+    $('#updated_on').text('');
+    $('#item_id').text('New');
+}
+
+function showMessage(message) {
+    $('#message p').text(message);
+    $('#message').animate({top: '10px', opacity: '1.0'}, 300, 'easeOutCubic').delay(1000).animate({top: '-35px', opacity: '0.0'}, 300, 'easeOutCubic');
 }

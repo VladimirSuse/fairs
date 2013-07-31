@@ -23,91 +23,54 @@ function generateRow($r) {?>
 
 <?php } 
 
-function generateCard() {
+function generateCard($data) {
     ?>
-    <form method="POST" class="card" id="emp_form">
+    <form method="POST" class="card" id="form<?= $data['id'] ?>">
         <div class="row top-bar">
+            <p id="item_id">Service <?= $data['id']; ?></p>
         </div>
         <div class="row">
-            <h3><i class="<?= $icon ?>"></i> <span id="card-title">Add New Employer</span></h3>
+            <h3><i class="<?= $icon ?>"></i> <span id="card-title"><?= $data["name_en"] . "<br/>" . $data["name_fr"] ?></span></h3>
         </div>
         <div class="row">
             <div class="row">
-                <h4>General Info</h4>
-            </div>
-            <div class="row">
-                <div class="seven columns">
-                    <input type="hidden" class="card-value" name="id" id="id">
+                <div class="nine columns">
+                    <input type="hidden" class="card-value" name="id" id="id" value="<?= $data['id'] ?>">
                 </div>
             </div>
             <div class="row">
                 <div class="nine columns">
-                    <label for="org_ganme_en" class="card-label">Organization Name (En)</label>
+                    <label for="price" class="card-label">Name (en)</label>
                 </div>
                 <div class="seven columns">
-                    <input type="text" class="card-value" name="org_name_en" id="org_name_en">
+                    <input type="text" class="card-value editable" name="name_en" id="name_en" value="<?= $data['name_en'] ?>">
                 </div>
-            </div>
+            </div>    
             <div class="row">
                 <div class="nine columns">
-                    <label for="org_name_en" class="card-label">Organization Name (Fr)</label>
+                    <label for="price" class="card-label">Name (fr)</label>
                 </div>
                 <div class="seven columns">
-                    <input type="text" class="card-value" name="org_name_fr" id="org_name_fr">
+                    <input type="text" class="card-value editable" name="name_fr" id="name_fr" value="<?= $data['name_fr'] ?>">
                 </div>
-            </div>
+            </div>    
             <div class="row">
                 <div class="nine columns">
-                    <label for="dep_name_en" class="card-label">Department Name (En)</label>
+                    <label for="price" class="card-label">Price</label>
                 </div>
                 <div class="seven columns">
-                    <input type="text" class="card-value editable" name="dep_name_en" id="dep_name_en">
+                    <input type="number" class="card-value editable" name="price" id="price" min="0" value="<?= $data['price'] ?>">
                 </div>
             </div>
-            <div class="row">
-                <div class="nine columns">
-                    <label for="dep_name_fr" class="card-label">Department name (Fr)</label>
+            <div class="row" id="saveRow">
+                <div class="centered three columns">
+                    <div class="medium btn secondary metro"><a id="submitFormButton" type="submit"><i class="icon-check"></i>Save </a></div>
                 </div>
-                <div class="seven columns">
-                    <input type="text" class="card-value editable" name="dep_name_fr" id="dep_name_fr">
+                <div class="six columns" style="text-align: right">
+                    <p id="updated_on"><?= ($data['last_updated'] ? 'Updated ' . $data['last_updated'] : '') ?></p>
                 </div>
-            </div>
-            <div class="row">
-                <div class="nine columns">
-                    <label for="website_en" class="card-label">Website (En)</label>
-                </div>
-                <div class="seven columns">
-                    <input type="text" class="card-value editable" name="website_en" id="website_en">
-                </div>
-            </div>
-            <div class="row">
-                <div class="nine columns">
-                    <label for="website_fr" class="card-label">Website (Fr)</label>
-                </div>
-                <div class="seven columns">
-                    <input type="text" class="card-value editable" name="website_fr" id="website_fr">
-                </div>
-            </div>
-            <div class="row">
-                <div class="nine columns">
-                    <label for="hst_exempt" class="card-label">HST exempt</label>
-                </div>
-                <div class="seven columns">
-                   <span class="buttonset">
-                      <input type='checkbox' name='hst_exempt' id='hst_exempt' value='1'>
-                    </span>
-                </div>
-            </div>
-            <div class="row">
-                <div class="nine columns">
-                    <label for="pst_exempt" class="card-label">PST exempt</label>
-                </div>
-                <div class="seven columns">
-                    <div class="buttonset">
-                        <input type='checkbox' name='pst_exempt' id='pst_exempt' value='1'>
-                    </div>
-                </div>
-            </div>            
+            </div>    
+        </div>            
     </form>
     <?php
 }

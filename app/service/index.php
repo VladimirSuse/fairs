@@ -23,11 +23,26 @@ if (!isset($_GET['page'])) {
     $data = $employer -> getService();
     require_once '../template/template.php';
 } elseif ($_GET['page'] == "card") {
-	# code...
+	require 'view.php';
+	$data = $employer -> getService($_GET['id']);
+	generateCard($data[0]);
 } elseif ($_GET['page'] == "edit") {
-	# code...
+	try {
+		 $lastid = $employer->updateService($_POST, $_POST['id']);
+		 echo $lastid;
+	} catch (Exception $e){
+        header('HTTP/1.0 400 Bad Request', 400);
+        header('Content-Type: text/plain');
+        echo $e->getMessage();
+	}
 } elseif ($_GET['page'] == "add") {
-	# code...
+	try {
+		$employer->saveService($_POST);
+	} catch (Exception $e){
+        header('HTTP/1.0 400 Bad Request', 400);
+        header('Content-Type: text/plain');
+        echo $e->getMessage();
+	}
 } elseif ($_GET['page'] == "contact") {
 	# action = add/del or edit
 } else {

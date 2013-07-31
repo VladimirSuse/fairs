@@ -68,7 +68,7 @@ include 'view.php';
                     </div>
                 </div>
                 <div class="six columns" id="oriCard">
-                    <?php generateCard()?> 
+                    <?php generateCard(array())?> 
                     <div id="overlay">
                         <!-- gray out div for loading cards -->
                     </div>
