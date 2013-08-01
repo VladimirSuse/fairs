@@ -68,23 +68,8 @@ include 'view.php';
                     </div>
                 </div>
                 <div class="six columns" id="oriCard">
-                    <div class="row">
-                        <?php generateEmpCard()?> 
-                        <div id="overlay">
-                            <!-- gray out div for loading cards -->
-                        </div>
                     <?php generateCard(array())?> 
-                    <div id="overlay">
-                        <!-- gray out div for loading cards -->
-                    </div>
-                    <div class="row" id="contactCard">
-                        <?php generateContactCard()?> 
-                        <div id="overlay">
-                        <!-- gray out div for loading cards -->
-                        </div>
-                    </div>    
-                </div>
-                         
+                </div>                         
             </div>
         </div>
         <div class="container">
