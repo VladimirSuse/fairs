@@ -58,7 +58,7 @@ include 'view.php';
                             <h2 id="pageTitle"><i class="<?= $icon ?>"></i> <?= $page_title; ?></h2>
                         </div>
                         <div class="nine columns" style="text-align: right; padding-top: 20px;">
-                            <div class="medium btn secondary metro" id="add-btn"><a href="#"><i class="icon-plus-squared"></i>Add <?= $page_title; ?></a></div>                        
+                            <div class="medium btn secondary metro" id="add-btn"><a><i class="icon-plus-squared"></i>Add <?= $page_title; ?></a></div>                        
                         </div>
                     </div>
                     <div class="row">

@@ -30,7 +30,13 @@ function initializePage() {
                 data: $("form.card").serializeArray(),
                 type: "POST", 
                 success: function(result) {  
-                    $('#add-btn').click();
+                    $('#mainTable').dataTable().fnAddData( [
+                        "<p>" + $("form.card #name_en").val() + "<br/>" + $("form.card #name_fr").val() + "</p>",
+                        "<p>" + $("form.card #price").val() + "</p>" +
+                        " <p id='justAdded' style='display: none;'>" + result + "</p>" ]
+                    );
+                    $("#justAdded").parents("tr").attr("data_item_id", result).click();
+                    $("#justAdded").remove();
                     showMessage("Item " + id + " added!");
                 }
             });
@@ -42,21 +48,18 @@ function initializePage() {
                 success: function() {
                     var node = $('tr[data_item_id="' + id + '"]')[0];
                     var location = $('#mainTable').dataTable().fnGetPosition(node);    
-                    console.log(loc);           
                     $('#mainTable').dataTable().fnUpdate(
                         [$("#name_en").attr("value") + "<br/>" + $("#name_fr").attr("value"), $("#price").attr("value")],
                         location
                     );
-                    $('#add-btn').click();
                     showMessage("Item " + id + " saved!");
                 }
             });
         }
     }); 
-//  .. 
+
     setTimeout(function() {
         $('#add-btn').click();
-        $('.choose-me').chosen();
     }, 500);
 }
 
@@ -66,24 +69,14 @@ function populate() {
         window.selected_row = $(this).attr('data_item_id');
         highlightSelectedRow();
 
-        var item = $(this);
+        $("#oriCard").css({opacity: "0"});
 
         $.ajax({
             url: "index.php?page=card&id=" + window.selected_row, 
             success: function(data) {
-                $("#overlay").css({display: "none"});  
-                $('#oriCard').css({background: "none", "z-index": "0"}).html(data + "<div id='overlay'></div>");
-
-                $('select').each(function() {
-                    if ($(this).find('[selected]').length == 0) {
-                        $(this).prop('selectedIndex', -1);
-                    }
-                });
-
-                $(".choose-me").chosen();
-
+                $("#oriCard").html(data);  
+                $("#oriCard").animate({opacity: "1"}, 1000);
             }
-
         });
 
     });

@@ -261,6 +261,7 @@ form {
 
 #oriCard {
     position: relative;
+    opacity: 0;
 }
 
 #overlay {

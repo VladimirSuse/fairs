@@ -37,14 +37,12 @@ if (!isset($_GET['page'])) {
 	}
 } elseif ($_GET['page'] == "add") {
 	try {
-		$employer->saveService($_POST);
+		echo $employer->saveService($_POST);
 	} catch (Exception $e){
         header('HTTP/1.0 400 Bad Request', 400);
         header('Content-Type: text/plain');
         echo $e->getMessage();
 	}
-} elseif ($_GET['page'] == "contact") {
-	# action = add/del or edit
 } else {
     require_once '../../includes/php/error.php';
 }

@@ -20,9 +20,48 @@ function initializePage() {
     // The selected_row variable describes which the item_id of the currently selected row, or -1 if no row is selected.
     window.selected_row = -1;
    
+    $(document).on("click", "#submitFormButton", function() {
+        var id = $(this).closest("form").attr("id");
+        id = id.replace("form", "");
+
+        if (window.selected_row == -1) {
+            $.ajax({
+                url: 'index.php?page=add', 
+                data: $("form.card").serializeArray(),
+                type: "POST", 
+                success: function(result) {  
+                    $('#mainTable').dataTable().fnAddData( [
+                        "<p>" + $("form.card #name_en").val() + "<br/>" + $("form.card #name_fr").val() + "</p>",
+                        "<p>" + $("form.card #start_date").val() + "<br/>" + $("form.card #end_date").val() + "</p>" +
+                        " <p id='justAdded' style='display: none;'>" + result + "</p>" ]
+                    );
+                    $("#justAdded").parents("tr").attr("data_item_id", result).click();
+                    $("#justAdded").remove();
+                    showMessage("Item " + id + " added!");
+                }
+            });
+        } else {
+            $.ajax({
+                url: 'index.php?page=edit', 
+                data: $("form.card").serializeArray(),
+                type: "POST", 
+                success: function() {
+                    var node = $('tr[data_item_id="' + id + '"]')[0];
+                    var location = $('#mainTable').dataTable().fnGetPosition(node);    
+                    $('#mainTable').dataTable().fnUpdate( [
+                        "<p>" + $("form.card #name_en").val() + "<br/>" + $("form.card #name_fr").val() + "</p>",
+                        "<p>" + $("form.card #start_date").val() + "<br/>" + $("form.card #end_date").val() + "</p>"
+                        ],
+                        location
+                    );
+                    showMessage("Item " + id + " saved!");
+                }
+            });
+        }
+    }); 
+
     setTimeout(function() {
         $('#add-btn').click();
-        $('.choose-me').chosen();
     }, 500);
 }
 
@@ -31,5 +70,26 @@ function populate() {
     $(document).on('click', 'tbody tr', function(e) {
         window.selected_row = $(this).attr('data_item_id');
         highlightSelectedRow();
+
+        $("#oriCard").css({opacity: "0"});
+
+        $.ajax({
+            url: "index.php?page=card&id=" + window.selected_row, 
+            success: function(data) {
+                $("#oriCard").html(data);  
+                $("#oriCard").animate({opacity: "1"}, 1000);
+            }
+        });
+
     });
+
 }
+
+$(document).on('click', '#add-btn', function() {
+    clearForm();
+    $('#card-title').text('Add a New Event');
+
+    window.selected_row = -1;
+    $('form').attr('action', 'index.php?page=add');
+    highlightSelectedRow();
+});

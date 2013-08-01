@@ -2,9 +2,9 @@
 $(function() {
 
 	initializePage();
-	keyNav();
 
     $("#mainTable").animate({opacity: "1"}, 1000);
+    $("#oriCard").animate({opacity: "1"}, 1000);
 
 	$('.buttonset').buttonset().fadeIn();
 
@@ -24,6 +24,8 @@ $(function() {
         }
     });
 
+    keyNav();   
+
 });
 
 function keyNav() {
@@ -34,7 +36,7 @@ function keyNav() {
 
             switch (keyCode) {
                 case arrow.up:
-                    var row = $('tr[item_id=' + window.selected_row + ']');
+                    var row = $('tr[data_item_id=' + window.selected_row + ']');
                     if (row.prev().length) {
                         row.prev().click();
                         
@@ -42,7 +44,7 @@ function keyNav() {
                     }
                     break;
                 case arrow.down:
-                    var row = $('tr[item_id=' + window.selected_row + ']');
+                    var row = $('tr[data_item_id=' + window.selected_row + ']');
                     if (row.next().length) {
                         row.next().click();
                        
