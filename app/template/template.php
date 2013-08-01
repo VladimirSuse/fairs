@@ -73,6 +73,9 @@ include 'view.php';
                         <div id="overlay">
                             <!-- gray out div for loading cards -->
                         </div>
+                    <?php generateCard(array())?> 
+                    <div id="overlay">
+                        <!-- gray out div for loading cards -->
                     </div>
                     <div class="row" id="contactCard">
                         <?php generateContactCard()?> 
