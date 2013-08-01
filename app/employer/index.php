@@ -23,15 +23,20 @@ if (!isset($_GET['page'])) {
     $data = $employer -> getAllEmployer();
     require_once '../template/template.php';
 } elseif ($_GET['page'] == "card") {
-	# code...
+	$data = array('billing_contacts' => $employer->getBillingContact($_POST['id']), 'emp_contacts' => $employer->getDirectContact($_POST['id']), 'emp_info' => $employer->getAllEmployer($_POST['id']));
+	echo json_encode($data);
+
 } elseif ($_GET['page'] == "add-edit") {
-	$data = array("org_name_en" => $_POST['org_name_en'], "org_name_fr" => $_POST['org_name_fr'],"dep_name_en" => $_POST['dep_name_en'], "dep_name_fr" => $_POST['dep_name_fr'], "website_en" => $_POST['website_en'], "website_fr" => $_POST['website_fr'], "hst_exempt" => $_POST['hst_exempt'], "pst_exempt" => $_POST['pst_exempt']);
 	//edit case
 	if(!empty($_POST['id'])){
-		$employer->updateEmployer($data,$_POST['id']);
+		$affectedRows = $employer->updateEmployer($_POST, $_POST['id']);
+		if($affectedRows > 0)
+			echo json_encode(array('type' => 'update','emp_info' => $employer->getAllEmployer($_POST['id'])));
 	}
 	else{
-		$employer->saveEmployer($data);
+		$id = $employer->saveEmployer($_POST);
+		if(!is_null($id))
+			echo json_encode(array('type' => 'add','emp_info' => $employer->getAllEmployer($id)));
 	}
 } elseif ($_GET['page'] == "contact") {
 	# action = add/del or edit

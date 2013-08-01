@@ -259,9 +259,12 @@ form {
     padding: 10px;
 }
 
-#oriCard {
+#oriCard, #contactCard{
     position: relative;
     opacity: 0;
+}
+#contactCard{
+    display:none;
 }
 
 #overlay {
@@ -288,6 +291,9 @@ form {
     color: white;
     background-color: #3085d6;
     border: .5px lightgray solid;
+}
+#add-contact{
+    margin-top:1em;
 }
 
 #saveRow {
