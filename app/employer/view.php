@@ -29,13 +29,13 @@ function generateRow($r) {?>
     </td>
 <?php } 
 
-function generateCard() {
+function generateEmpCard() {
     ?>
     <form method="POST" class="card" id="emp_form">
         <div class="row top-bar">
         </div>
         <div class="row">
-            <h3><i class="<?= $icon ?>"></i> <span id="card-title">Add New Employer</span></h3>
+            <h3><i class="<?= $icon ?>"></i> <span id="emp-card-title">Add New Employer</span></h3>
         </div>
         <div class="row">
             <div class="row">
@@ -119,6 +119,120 @@ function generateCard() {
             <div class="row">
                 <div class="sixteen columns text-center">
                     <div class="medium btn secondary metro" id='add-employer'><input type="submit" value="Save"></div>  
+                </div>          
+            </div>
+    </form>
+    <?php
+}
+function generateContactCard() {
+    ?>
+    <form method="POST" class="card" id="contact_form">
+        <div class="row top-bar">
+        </div>
+        <div class="row">
+            <h3><i class="<?= $icon ?>"></i> <span id="contact-card-title">Add Employer Contact</span></h3>
+        </div>
+        <div class="row">
+            <div class="row">
+                <div class="seven columns">
+                    <input type="hidden" class="card-value" name="id" id="contact_emp_id">
+                </div>
+            </div>
+            <div class="row">
+                <div class="nine columns">
+                    <label for="first_name" class="card-label">First Name</label>
+                </div>
+                <div class="seven columns">
+                    <input type="text" class="card-value" name="first_name" id="first_name">
+                </div>
+            </div>
+            <div class="row">
+                <div class="nine columns">
+                    <label for="last_name" class="card-label">Last Name</label>
+                </div>
+                <div class="seven columns">
+                    <input type="text" class="card-value" name="last_name" id="last_name">
+                </div>
+            </div>
+            <div class="row">
+                <div class="nine columns">
+                    <label for="street" class="card-label">Street Address</label>
+                </div>
+                <div class="seven columns">
+                    <input type="text" class="card-value" name="street" id="street">
+                </div>
+            </div>
+            <div class="row">
+                <div class="nine columns">
+                    <label for="street2" class="card-label">Alternate Street Address</label>
+                </div>
+                <div class="seven columns">
+                    <input type="text" class="card-value" name="street2" id="street2">
+                </div>
+            </div>
+            <div class="row">
+                <div class="nine columns">
+                    <label for="postal_code" class="card-label">Postal Code</label>
+                </div>
+                <div class="seven columns">
+                    <input type="text" class="card-value" name="postal_code" id="postal_code">
+                </div>
+            </div>
+            <div class="row">
+                <div class="nine columns">
+                    <label for="province" class="card-label">Province</label>
+                </div>
+                <div class="seven columns">
+                    <input type="text" class="card-value" name="province" id="province">
+                </div>
+            </div>
+            <div class="row">
+                <div class="nine columns">
+                    <label for="city" class="card-label">City</label>
+                </div>
+                <div class="seven columns">
+                    <input type="text" class="card-value" name="city" id="city">
+                </div>
+            </div>
+            <div class="row">
+                <div class="nine columns">
+                    <label for="country" class="card-label">Country</label>
+                </div>
+                <div class="seven columns">
+                    <input type="text" class="card-value" name="country" id="country">
+                </div>
+            </div>
+            <div class="row">
+                <div class="nine columns">
+                    <label for="phone" class="card-label">Phone Number</label>
+                </div>
+                <div class="seven columns">
+                    <input type="text" class="card-value" name="phone" id="phone">
+                </div>
+            </div>
+            <div class="row">
+                <div class="nine columns">
+                    <label for="extension" class="card-label">Extension</label>
+                </div>
+                <div class="seven columns">
+                    <input type="text" class="card-value" name="extension" id="extension">
+                </div>
+            </div>
+            <div class="row">
+                <div class="nine columns">
+                    <label for="e-mail" class="card-label">Email</label>
+                </div>
+                <div class="seven columns">
+                    <input type="text" class="card-value" name="e-mail" id="e-mail">
+                </div>
+            </div>
+            <div class="row text-center">
+                <select class="chosen" id="contacts-select" data-placeholder="select a contact">
+                </select>
+            </div>
+            <div class="row">
+                <div class="sixteen columns text-center">
+                    <div class="medium btn secondary metro" id='add-contact'><input type="submit" value="Save"></div>  
                 </div>          
             </div>
     </form>
