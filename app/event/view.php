@@ -1,6 +1,6 @@
 <?php
 
-function generateTable($data, $equip) {
+function generateTable($data) {
 ?>
 <thead>
     <th>Name</th>

@@ -30,7 +30,6 @@ if (!isset($_GET['page'])) {
 	//edit case
 	if(!empty($_POST['id'])){
 		$affectedRows = $employer->updateEmployer($_POST, $_POST['id']);
-		if($affectedRows > 0)
 			echo json_encode(array('type' => 'update','emp_info' => $employer->getAllEmployer($_POST['id'])));
 	}
 	else{

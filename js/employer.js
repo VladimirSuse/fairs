@@ -49,11 +49,11 @@ function initializePage() {
                     $('#contactCard').fadeIn();
                 }
                 else if(data['type'] == 'update'){
-                    var node = $('tr[data_item_id="' + data['emp_info'][0].id + '"]')[0];
+                    var node = $('tr[data_item_id="' + $("#id").val() + '"]')[0];
                     var location = $('#mainTable').dataTable().fnGetPosition(node);             
                     $('#mainTable').dataTable().fnUpdate([
-                            data['emp_info'][0].org_name_en + "<br>" + data['emp_info'][0].org_name_fr, 
-                            data['emp_info'][0].dep_name_en + "<br>" + data['emp_info'][0].dep_name_fr
+                        "<p>" + $("#org_name_en").val() + "<br/>" + $("#org_name_fr").val() + "</p>",
+                        "<p>" + $("#dep_name_en").val() + "<br/>" + $("#dep_name_fr").val() + "</p>"
                         ],
                         location
                     );
@@ -62,16 +62,6 @@ function initializePage() {
         });
     });
    
-    setTimeout(function() {
-        $('#add-btn').click(function(){
-            $('#contactCard').fadeOut();
-            $('#emp-card-title').html('Add New Employer')
-            $('#contact-card-title').html('Add Employer Contact');
-            $('.card-value').val('');
-
-        });
-        $('.choose-me').chosen();
-    }, 500);
 }
 
 function populate() {
@@ -104,7 +94,7 @@ function populate() {
                 $('.chosen').chosen();
                 $('.chosen').trigger('liszt:updated');
                 $('.buttonset').buttonset();
-                $('#contactCard').fadeIn();
+                $('#contactCard').animate({opacity: "1"}, 1000);
             }
         });
     });
@@ -142,3 +132,12 @@ function cardPopulate(data, cardType){
     }
 
 }
+
+$(document).on('click', '#add-btn', function() {
+    clearForm();
+    $('#card-title').text('Add a New Employer');
+
+    window.selected_row = -1;
+    $('form').attr('action', 'index.php?page=add');
+    highlightSelectedRow();
+});

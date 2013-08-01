@@ -14,6 +14,7 @@ function initializePage() {
         }
         
     });
+
     $('#mainTable_filter').addClass('field');
     $('#mainTable_filter input').addClass('normal search input');
 
@@ -60,9 +61,6 @@ function initializePage() {
         }
     }); 
 
-    setTimeout(function() {
-        $('#add-btn').click();
-    }, 500);
 }
 
 function populate() {

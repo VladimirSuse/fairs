@@ -1,6 +1,6 @@
 <?php
 
-function generateTable($data, $equip) {
+function generateTable($data) {
 ?>
 <thead>
     <th>Name</th>
@@ -29,7 +29,7 @@ function generateRow($r) {?>
     </td>
 <?php } 
 
-function generateEmpCard() {
+function generateCard() {
     ?>
     <form method="POST" class="card" id="emp_form">
         <div class="row top-bar">

@@ -263,9 +263,6 @@ form {
     position: relative;
     opacity: 0;
 }
-#contactCard{
-    display:none;
-}
 
 #overlay {
     background: rgba(0,0,0,0.1);

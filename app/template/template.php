@@ -63,13 +63,25 @@ include 'view.php';
                     </div>
                     <div class="row">
                         <table id="mainTable">
-                           <?php generateTable($data, $equip); ?>
+                           <?php generateTable($data); ?>
                         </table>
                     </div>
                 </div>
-                <div class="six columns" id="oriCard">
-                    <?php generateCard(array())?> 
-                </div>                         
+                <div class="six columns">
+                    <div id="oriCard">
+                        <?php
+                            generateCard(array());
+
+                                if ($page_title == "Employers") {
+                             
+                        ?> 
+                    </div>                       
+                    <div id="contactCard">
+                        <?php       generateContactCard(); 
+                                } 
+                        ?>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="container">
