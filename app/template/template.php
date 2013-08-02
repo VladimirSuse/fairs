@@ -61,27 +61,28 @@ include 'view.php';
                             <div class="medium btn secondary metro" id="add-btn"><a><i class="icon-plus-squared"></i>Add <?= $page_title; ?></a></div>                        
                         </div>
                     </div>
-                    <div class="row">
-                        <table id="mainTable">
-                           <?php generateTable($data); ?>
-                        </table>
-                    </div>
-                </div>
-                <div class="six columns">
-                    <div id="oriCard">
-                        <?php
-                            generateCard(array());
+                    <?php 
 
-                                if ($page_title == "Employers") {
-                             
-                        ?> 
-                    </div>                       
-                    <div id="contactCard">
-                        <?php       generateContactCard(); 
-                                } 
-                        ?>
-                    </div>
-                </div>
+                        switch($page_title) {
+
+                            case "Employers": 
+                                require "template-employer.php";
+                                break;
+                            case "Events": 
+                                require "template-event.php";
+                                break;
+
+                            case "Services": 
+                                require "template-service.php";
+                                break;
+
+                            case "Invoices": 
+                                require "template-invoice.php";
+                                break;
+
+                        }
+
+                    ?>
             </div>
         </div>
         <div class="container">
