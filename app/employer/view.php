@@ -1,35 +1,34 @@
 <?php
 
-function generateTable($data) {
+function generateEmployerTable($data) {
 ?>
 <thead>
     <th>Name</th>
-    <th>Department</th>
 </thead>
 <tbody>
     <?php 
     foreach ($data as $r): ?>
     <tr data_item_id="<?= $r['id'] ?>">
-        <?php generateRow($r); ?>
+        <?php generateEmployerRow($r); ?>
     </tr>
     <?php endforeach; ?>
 </tbody>
 <?php
 }
 
-function generateRow($r) {?>
+function generateEmployerRow($r) {?>
     <td itemprop="org_name"><p><?= htmlspecialchars($r['org_name_en']) . "<br/>" . htmlspecialchars($r['org_name_fr']); ?></p></td>
-    <td itemprop="dep_name"><p><?= htmlspecialchars($r['dep_name_en']) . "<br/>" . htmlspecialchars($r['dep_name_fr']); ?></p>
-        
         <!-- Metadata -->
         <div style="display: none">
+            <p itemprop="dep_name_en"><?= htmlspecialchars($r['dep_name_en']) ?></p>
+            <p itemprop="dep_name_fr"><?= htmlspecialchars($r['dep_name_fr']) ?></p>
             <p itemprop="website_en"><?= htmlspecialchars($r['website_en']) ?></p>
             <p itemprop="website_fr"><?= htmlspecialchars($r['website_fr']) ?></p>
         </div>
     </td>
 <?php } 
 
-function generateCard() {
+function generateEmployerCard($data) {
     ?>
     <form method="POST" class="card" id="emp_form">
         <div class="row top-bar">
@@ -121,10 +120,11 @@ function generateCard() {
                     <div class="medium btn secondary metro" id='add-employer'><input type="submit" value="Save"></div>  
                 </div>          
             </div>
+        </div>    
     </form>
     <?php
 }
-function generateContactCard() {
+function generateContactCard($data) {
     ?>
     <form method="POST" class="card" id="contact_form">
         <div class="row top-bar">
@@ -235,7 +235,9 @@ function generateContactCard() {
                     <div class="medium btn secondary metro" id='add-contact'><input type="submit" value="Save"></div>  
                 </div>          
             </div>
+        </div>    
     </form>
+
     <?php
 }
 ?>

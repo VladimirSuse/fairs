@@ -84,11 +84,7 @@ function populate() {
                 //populate with the first contact retrieved
                 cardPopulate(data['emp_contacts'][0],'contact');
                 $.each(data['emp_contacts'], function(){
-                    $('#contacts-select').append('<option id="' + this.id + '" data-first_name="' + this.first_name + '" data-last_name="' + this.last_name + '"'+
-                                                      'data-street="' + this.street + '" data-street2="' + this.street2 + '" data-postal_code="' + this.postal_code + '"'+
-                                                      'data-province="' + this.province + '" data-city="' + this.city + '" data-country="' + this.country + '"'+
-                                                      'data-phone="' + this.phone + '" data-extension="' + this.extension + '" data-e-mail="' + this['e-mail'] + 
-                                                      '">' +this.first_name + ' ' + this.last_name + '</option>');
+                    $('#contacts-select').append('<option id="' + this.id + '">' +this.first_name + ' ' + this.last_name + '</option>');
                 });
                 
                 $('.chosen').chosen();
