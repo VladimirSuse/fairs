@@ -31,7 +31,7 @@ if (!isset($_GET['page'])) {
 		         );
 	echo json_encode($data);
 
-} elseif ($_GET['page'] == "add-edit") {
+} elseif ($_GET['page'] == "add-edit-employer") {
 	//edit case
 	if(!empty($_POST['id'])){
 		$affectedRows = $employer->updateEmployer($_POST, $_POST['id']);

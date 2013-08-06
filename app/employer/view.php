@@ -30,11 +30,12 @@ function generateEmployerRow($r) {?>
 
 function generateEmployerCard($data) {
     ?>
-    <form method="POST" class="card" id="emp_form">
+    <form method="POST" id="emp_form">
         <div class="row top-bar">
+            <p id="item_id">Employer<?= $data['id']; ?></p>
         </div>
         <div class="row">
-            <h3><i class="<?= $icon ?>"></i> <span id="emp-card-title">Add New Employer</span></h3>
+            <h3><i class="<?= $icon ?>"></i> <span id="employer-card-title">Add New Employer</span></h3>
         </div>
         <div class="row">
             <div class="row">
@@ -99,8 +100,8 @@ function generateEmployerCard($data) {
                 </div>
                 <div class="seven columns">
                    <div class="buttonset">
-                       <input type='radio' name='hst_exempt' id='employer_hst_exempt-yes' value='1'><label for='hst_exempt-yes'>Yes</label>
-                       <input type='radio' name='hst_exempt' id='employer_hst_exempt-no' checked='checked' value='0'><label for='hst_exempt-no'>No</label>
+                       <input type='radio' name='hst_exempt' id='hst_exempt-yes' value='1'><label for='hst_exempt-yes'>Yes</label>
+                       <input type='radio' name='hst_exempt' id='hst_exempt-no' checked='checked' value='0'><label for='hst_exempt-no'>No</label>
                     </div>
                 </div>
             </div>
@@ -110,8 +111,8 @@ function generateEmployerCard($data) {
                 </div>
                 <div class="seven columns">
                     <div class="buttonset">
-                        <input type='radio' name='pst_exempt' id='employer_pst_exempt-yes' value='1'><label for='pst_exempt-yes'>Yes</label>
-                        <input type='radio' name='pst_exempt' id='employer_pst_exempt-no' checked='checked' value='0'><label for='pst_exempt-no'>No</label>
+                        <input type='radio' name='pst_exempt' id='pst_exempt-yes' value='1'><label for='pst_exempt-yes'>Yes</label>
+                        <input type='radio' name='pst_exempt' id='pst_exempt-no' checked='checked' value='0'><label for='pst_exempt-no'>No</label>
                     </div>
                 </div>
             </div>
@@ -126,11 +127,19 @@ function generateEmployerCard($data) {
 }
 function generateContactCard($data) {
     ?>
-    <form method="POST" class="card" id="contact_form">
+    <form method="POST" id="contact_form">
         <div class="row top-bar">
+            <p id="item_id">Contact<?= $data['id']; ?></p>
         </div>
         <div class="row">
             <h3><i class="<?= $icon ?>"></i> <span id="contact-card-title">Add Employer Contact</span></h3>
+        </div>
+        <div class="row">
+             <div class="nine columns">
+                <label for="contacts-select" class="card-label">Viewing</label>
+            </div>
+            <select style="width:11em" class="chosen" id="contacts-select" data-placeholder="contact_select a contact">
+            </select>
         </div>
         <div class="row">
             <div class="row">
@@ -230,10 +239,6 @@ function generateContactCard($data) {
                 <div class="seven columns">
                     <input type="text" class="card-value" name="e-mail" id="contact_e-mail">
                 </div>
-            </div>
-            <div class="row text-center">
-                <select class="chosen" id="contacts-select" data-placeholder="contact_select a contact">
-                </select>
             </div>
             <div class="row">
                 <div class="sixteen columns text-center">
