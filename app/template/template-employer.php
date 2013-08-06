@@ -14,9 +14,7 @@
     </div>
 </div>                          
 <div class="five columns">
-    <table id="eventTable">
     <?php require "../event/view.php" ?>
-            <?php  generateTable(array()) ?>
-    </table>        
+            <?php  generateCard(array()) ?>       
 </div>    
 </div>
