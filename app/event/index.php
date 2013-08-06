@@ -9,6 +9,7 @@ ini_set('display_errors', '1');
 // MODEL 
 //============================================================================================
 require_once '../../includes/Employer.php';
+require '../employer/view.php';
 $employer = new Employer();
 
 $page_title = 'Events';
@@ -24,8 +25,12 @@ if (!isset($_GET['page'])) {
     require_once '../template/template.php';
 } elseif ($_GET['page'] == "card") {
 	require 'view.php';
-	$data = $employer -> getEvent($_GET['id']);
-	generateCard($data[0]);
+
+	$info = array(
+		"event" => $employer -> getEvent($_GET['id']),
+		"employers" => $employer -> getEventRegistrationEvent($_GET['id'])
+		);
+	echo json_encode($info);
 } elseif ($_GET['page'] == "edit") {
 	try {
 		 $lastid = $employer->updateEvent($_POST, $_POST['id']);
@@ -43,6 +48,15 @@ if (!isset($_GET['page'])) {
         header('Content-Type: text/plain');
         echo $e->getMessage();
 	}
+} elseif ($_GET['page'] == "employer") {
+	require '../employer/view.php';
+	$allEmp = $employer -> getAllEmployer();
+	$relEmp = $employer -> getEventRegistrationEvent($_GET['id']);
+	generateEmployerCard($data[0]);
+} elseif ($_GET['page'] == "contact") {
+	require '../employer/view.php';
+	$contacts = $employer -> getDirectContact($_GET['id']);
+	generateContactCard($data[0]);
 } else {
     require_once '../../includes/php/error.php';
 }

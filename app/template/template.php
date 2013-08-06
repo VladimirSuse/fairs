@@ -52,7 +52,7 @@ include 'view.php';
         </div>
         <div class="container content">
             <div class="row">
-                <div class="ten columns" id="left-panel">
+                <div class="five columns" id="left-panel">
                     <div class="row">
                         <div class="seven columns">
                             <h2 id="pageTitle"><i class="<?= $icon ?>"></i> <?= $page_title; ?></h2>

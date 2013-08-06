@@ -29,7 +29,7 @@ function generateRow($r) {?>
     </td>
 <?php } 
 
-function generateCard() {
+function generateEmployerCard() {
     ?>
     <form method="POST" class="card" id="emp_form">
         <div class="row top-bar">
@@ -234,7 +234,7 @@ function generateContactCard() {
                 <div class="sixteen columns text-center">
                     <div class="medium btn secondary metro" id='add-contact'><input type="submit" value="Save"></div>  
                 </div>          
-            </div>
+            </div></div>
     </form>
     <?php
 }
