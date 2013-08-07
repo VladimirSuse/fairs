@@ -26,7 +26,7 @@ if (!isset($_GET['page'])) {
 	$data = array(
 				  	'billing_contacts' => $employer->getBillingContact($_POST['id']), 
 		          	'emp_contacts' => $employer->getDirectContact($_POST['id']), 
-		          	'events' => $employer -> getEventRegistration($_POST['id']),
+		          	'events' => $employer -> getEventRegistrationEmployer($_POST['id']),
 		          	'emp_info' => $employer->getAllEmployer($_POST['id'])
 		         );
 	echo json_encode($data);

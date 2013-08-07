@@ -10,13 +10,25 @@ function initializePage() {
             [25, 50, 100, "All"]
         ],
         "aoColumns": [
-           { "sWidth": "2rem" },
+           {  }
         ],
         "bAutoWidth": false,
         "fnDrawCallback": function() {
             highlightSelectedRow();
         }
         
+    });
+
+$("#employerTable").dataTable({
+        "iDisplayLength": 10,
+        "aaSorting": [[0, "asc"]],
+        "bAutoWidth": false,
+        "aoColumns": [
+            { "sWidth": "20rem" }
+        ],
+        "fnDrawCallback": function() {
+            highlightSelectedRow();
+        }
     });
 
     $('#mainTable_filter').addClass('field');
@@ -70,7 +82,7 @@ function initializePage() {
 
 function populate() {
 
-    $(document).on('click', 'tbody tr', function(e) {
+    $(document).on('click', '#mainTable tbody tr', function(e) {
         window.selected_row = $(this).attr('data_item_id');
         highlightSelectedRow();
 
@@ -80,14 +92,11 @@ function populate() {
             url: "index.php?page=card&id=" + window.selected_row,
             dataType: "JSON",    
             success: function(data) {
-                populateEventCard(data['event'][0]);
+                cardPopulate(data['event'][0], "event");
                 $("#oriCard").animate({opacity: "1"}, 1000);
                 $("#employerCard").animate({opacity: "1"}, 1000);
-
+                empListTable(data['employers'][0]);
                 var empCard = $("#emp_form").remove();
-                // $("#employerCard").dataTable({
-                //     "sAjaxSource": data['employers'][0]
-                // });
             }
         });
 
@@ -105,3 +114,15 @@ $(document).on('click', '#add-btn', function() {
     $('form').attr('action', 'index.php?page=add');
     highlightSelectedRow();
 });
+
+function empListTable(data) {
+
+    $("#employerTable").dataTable().fnClearTable();
+
+    console.log(data.org_name_en);
+    $("#employerTable").dataTable().fnAddData( [
+        '<p>' + data.org_name_en + '<br>' + data.org_name_fr + '</p>'        
+    ]);
+
+    $("#employerTableDiv").show();
+}

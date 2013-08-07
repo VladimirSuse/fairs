@@ -13,13 +13,24 @@
 </div>
 <div class="five columns">
     <div class="card" id="employerCard">
+        <div id="employerTableDiv">
+            <h3>Registered Employers</h3>
+            <table id="employerTable">
+                <thead>
+                    <th>Name</th>
+                </thead>
+                <tbody>
+                    <td itemprop="org_name"></td>
+                </tbody>
+            </table>
+        </div>
         <?php
-            generateEmployerCard();
+            generateEmployerCard(array());
         ?>
     </div>
     <div class="card" id="contactCard">
         <?php
-            generateContactCard();
+            generateContactCard(array());
         ?>
     </div>
 </div>
