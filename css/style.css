@@ -275,10 +275,14 @@ form {
 #saveRow {
     margin-top: 1rem;
 }
-#eventCard{
+#eventCard {
     height:67.8em;
 }
 
 #employerTableDiv {
     display: none;
+}
+
+#employerTableDiv {
+    height: 970px;
 }

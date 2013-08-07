@@ -20,7 +20,7 @@ function initializePage() {
     });
 
 $("#employerTable").dataTable({
-        "iDisplayLength": 10,
+        "iDisplayLength": 14,
         "aaSorting": [[0, "asc"]],
         "bAutoWidth": false,
         "aoColumns": [
@@ -95,7 +95,7 @@ function populate() {
                 cardPopulate(data['event'][0], "event");
                 $("#oriCard").animate({opacity: "1"}, 1000);
                 $("#employerCard").animate({opacity: "1"}, 1000);
-                empListTable(data['employers'][0]);
+                empListTable(data['employers']);
                 var empCard = $("#emp_form").remove();
             }
         });
@@ -119,10 +119,15 @@ function empListTable(data) {
 
     $("#employerTable").dataTable().fnClearTable();
 
-    console.log(data.org_name_en);
-    $("#employerTable").dataTable().fnAddData( [
-        '<p>' + data.org_name_en + '<br>' + data.org_name_fr + '</p>'        
-    ]);
+    if(data.length > 0) {
+        $.each(data, function() {
+            $("#employerTable").dataTable().fnAddData( [
+                '<p>' + this.org_name_en + '<br>' + this.org_name_fr + '</p>' +
+                '<div style="display: none;" id="registeredEmployerId">' + this.id + '</div>'       
+            ]);
+        });
+
+    }
 
     $("#employerTableDiv").show();
 }
