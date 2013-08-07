@@ -110,6 +110,7 @@ function cardPopulate(data, cardType){
         (data.pst_exempt == 0 ? $('#pst_exempt-no').attr('checked','checked') : $('#pst_exempt-yes').attr('checked','checked'));
     }
     else if(cardType =="contact"){
+        $('#contact_id').val(data.id);
         $('#contact_first_name').val(data.first_name);
         $('#contact_last_name').val(data.last_name);
         $('#contact_street').val(data.street);

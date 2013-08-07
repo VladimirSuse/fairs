@@ -11,6 +11,12 @@
      <div class="row card" id="contactCard">
         <?php  generateContactCard(array()); 
         ?>
+        <div class="row" id="no-contacts">
+        <p>This employer currently has no contacts.</p>
+            <div class="row text-center">
+                <div class="metro medium btn secondary" id="add-contacts"><a href="#">Add a contact</a></div>
+            </div>
+        </div> 
     </div>
 </div>                          
 <div class="five columns card" id="eventCard">

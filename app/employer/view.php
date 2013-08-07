@@ -134,7 +134,7 @@ function generateContactCard($data) {
         <div class="row">
             <h3><i class="<?= $icon ?>"></i> <span id="contact-card-title">Add Employer Contact</span></h3>
         </div>
-        <div class="row">
+        <div class="row" id="contacts-list">
              <div class="nine columns">
                 <label for="contacts-select" class="card-label">Viewing</label>
             </div>
@@ -144,12 +144,7 @@ function generateContactCard($data) {
         <div class="row">
             <div class="row">
                 <div class="seven columns">
-                    <input type="hidden" class="card-value" name="id" id="contact_id">
-                </div>
-            </div>
-            <div class="row">
-                <div class="seven columns">
-                    <input type="hidden" class="card-value" name="id" id="contact_emp_id">
+                    <input type="hidden" class="card-value contact-card-value" name="id" id="contact_id">
                 </div>
             </div>
             <div class="row">
@@ -157,7 +152,7 @@ function generateContactCard($data) {
                     <label for="first_name" class="card-label">First Name</label>
                 </div>
                 <div class="seven columns">
-                    <input type="text" class="card-value" name="first_name" id="contact_first_name">
+                    <input type="text" class="card-value contact-card-value" name="first_name" id="contact_first_name">
                 </div>
             </div>
             <div class="row">
@@ -165,7 +160,7 @@ function generateContactCard($data) {
                     <label for="last_name" class="card-label">Last Name</label>
                 </div>
                 <div class="seven columns">
-                    <input type="text" class="card-value" name="last_name" id="contact_last_name">
+                    <input type="text" class="card-value contact-card-value" name="last_name" id="contact_last_name">
                 </div>
             </div>
             <div class="row">
@@ -173,7 +168,7 @@ function generateContactCard($data) {
                     <label for="street" class="card-label">Street Address</label>
                 </div>
                 <div class="seven columns">
-                    <input type="text" class="card-value" name="street" id="contact_street">
+                    <input type="text" class="card-value contact-card-value" name="street" id="contact_street">
                 </div>
             </div>
             <div class="row">
@@ -181,7 +176,7 @@ function generateContactCard($data) {
                     <label for="street2" class="card-label">Alternate Street Address</label>
                 </div>
                 <div class="seven columns">
-                    <input type="text" class="card-value" name="street2" id="contact_street2">
+                    <input type="text" class="card-value contact-card-value" name="street2" id="contact_street2">
                 </div>
             </div>
             <div class="row">
@@ -189,15 +184,15 @@ function generateContactCard($data) {
                     <label for="postal_code" class="card-label">Postal Code</label>
                 </div>
                 <div class="seven columns">
-                    <input type="text" class="card-value" name="postal_code" id="contact_postal_code">
+                    <input type="text" class="card-value contact-card-value" name="postal_code" id="contact_postal_code">
                 </div>
             </div>
             <div class="row">
                 <div class="nine columns">
                     <label for="province" class="card-label">Province</label>
                 </div>
-                <div class="seven columns">
-                    <input type="text" class="card-value" name="province" id="contact_province">
+                <div class="seven columns"> 
+                    <input type="text" class="card-value contact-card-value" name="province" id="contact_province">
                 </div>
             </div>
             <div class="row">
@@ -205,7 +200,7 @@ function generateContactCard($data) {
                     <label for="city" class="card-label">City</label>
                 </div>
                 <div class="seven columns">
-                    <input type="text" class="card-value" name="city" id="contact_city">
+                    <input type="text" class="card-value contact-card-value" name="city" id="contact_city">
                 </div>
             </div>
             <div class="row">
@@ -213,7 +208,7 @@ function generateContactCard($data) {
                     <label for="country" class="card-label">Country</label>
                 </div>
                 <div class="seven columns">
-                    <input type="text" class="card-value" name="country" id="contact_country">
+                    <input type="text" class="card-value contact-card-value" name="country" id="contact_country">
                 </div>
             </div>
             <div class="row">
@@ -221,7 +216,7 @@ function generateContactCard($data) {
                     <label for="phone" class="card-label">Phone Number</label>
                 </div>
                 <div class="seven columns">
-                    <input type="text" class="card-value" name="phone" id="contact_phone">
+                    <input type="text" class="card-value contact-card-value" name="phone" id="contact_phone">
                 </div>
             </div>
             <div class="row">
@@ -229,7 +224,7 @@ function generateContactCard($data) {
                     <label for="extension" class="card-label">Extension</label>
                 </div>
                 <div class="seven columns">
-                    <input type="text" class="card-value" name="extension" id="contact_extension">
+                    <input type="text" class="card-value contact-card-value" name="extension" id="contact_extension">
                 </div>
             </div>
             <div class="row">
@@ -237,7 +232,7 @@ function generateContactCard($data) {
                     <label for="e-mail" class="card-label">Email</label>
                 </div>
                 <div class="seven columns">
-                    <input type="text" class="card-value" name="e-mail" id="contact_e-mail">
+                    <input type="text" class="card-value contact-card-value" name="e-mail" id="contact_e-mail">
                 </div>
             </div>
             <div class="row">

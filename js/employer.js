@@ -58,16 +58,53 @@ function initializePage() {
                         '</div>'  
                     ]);
                     $('tr:has(div[data-id="' + data['emp_info'][0].id + '"])').attr('data_item_id', data['emp_info'][0].id);
+                    showMessage('Employer was successfully added.'); 
                     $('#contactCard').fadeIn();
                 }
                 else if(data['type'] == 'update'){
-                    var node = $('tr[data_item_id="' + $("#employer_id").val() + '"]')[0];
-                    var location = $('#mainTable').dataTable().fnGetPosition(node);             
-                    $('#mainTable').dataTable().fnUpdate([
-                        "<p>" + $("#employer_org_name_en").val() + "<br/>" + $("#employer_org_name_fr").val() + "</p>"
-                        ],
-                        location
-                    );
+                    if(data['success'] == "true"){ 
+                        var node = $('tr[data_item_id="' + $("#employer_id").val() + '"]')[0];
+                        var location = $('#mainTable').dataTable().fnGetPosition(node);             
+                        $('#mainTable').dataTable().fnUpdate([
+                            "<p>" + $("#employer_org_name_en").val() + "<br/>" + $("#employer_org_name_fr").val() + "</p>"
+                            ],
+                            location
+                        );
+                        showMessage('Employer was successfully updated.');
+                    }
+                }
+            }
+        });
+    });
+    
+    //event handler for when the user clicks add a contact
+    $('#add-contacts').on('click', function(e){
+        console.log("here");
+        e.preventDefault();
+        $('.contact-card-value').val("");
+        $('#contacts-select').empty();
+        $('#contacts-list').hide();
+        $('#no-contacts').hide();
+        $('#contact_form').fadeIn();
+
+    });
+
+    //listener add/edit contact form submission
+    $('#contact_form').on('submit', function(event){
+        event.preventDefault();
+        $.ajax({
+            type: $('#contact_form').attr('method'),
+            dataType:'json',
+            url:"index.php?page=add-edit-contact",
+            data: $('#contact_form').serialize(),
+            success:function(data){
+                if(data['type'] == 'add'){
+                     showMessage('Employer contact was successfully added.');  
+                }
+                else if(data['type'] == 'update'){
+                    if(data['success'] == "true"){ 
+                        showMessage('Employer contact was successfully updated.');
+                    }
                 }
             }
         });
@@ -94,7 +131,15 @@ function populate() {
                 $('#card-title').html('Viewing Event Registration');
                 (data['emp_info'][0] !== undefined ? cardPopulate(data['emp_info'][0],'employer') : '');
                 //populate with the first contact retrieved
-                (data['emp_contacts'][0] !== undefined ? cardPopulate(data['emp_contacts'][0],'contact') : '');
+                if(data['emp_contacts'][0] !== undefined){
+                    cardPopulate(data['emp_contacts'][0],'contact');
+                    $('#no-contacts').fadeOut();
+                    $('#contact_form').fadeIn();
+                }
+                else{ 
+                    $('#contact_form').fadeOut();
+                    $('#no-contacts').fadeIn();
+                } 
                 if(data['events'][0] !== undefined){
                     cardPopulate(data['events'][0],'event');
                     $('#no-events').fadeOut();
