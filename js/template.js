@@ -75,7 +75,7 @@ function showMessage(message) {
 }
 
 function populateEventCard(e) {
-    $('#form').attr("id", "form" + e.id);
+    $('#event-card-title').closest("form.card").attr("id", "form" + e.id);
     $('#event-card-title').html("Event Card");
     $('#event_item_id').html("Event " + e.id);
     $('#event_id').val(e.id);

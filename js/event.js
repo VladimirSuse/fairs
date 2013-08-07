@@ -38,7 +38,7 @@ function initializePage() {
                 type: "POST", 
                 success: function(result) {  
                     $('#mainTable').dataTable().fnAddData( [
-                        "<p>" + $("form.card #name_en").val() + "<br/>" + $("form.card #name_fr").val() + "</p>" +
+                        "<p>" + $("#event_name_en").val() + "<br/>" + $("#event_name_fr").val() + "</p>" +
                         " <p id='justAdded' style='display: none;'>" + result + "</p>" 
                         ] 
                     );
@@ -56,7 +56,7 @@ function initializePage() {
                     var node = $('tr[data_item_id="' + id + '"]')[0];
                     var location = $('#mainTable').dataTable().fnGetPosition(node);    
                     $('#mainTable').dataTable().fnUpdate( [
-                        "<p>" + form.children("#name_en").val() + "<br/>" + $("form.card #name_fr").val() + "</p>"
+                        "<p>" + $("#event_name_en").val() + "<br/>" + $("#event_name_fr").val() + "</p>"
                         ],
                         location
                     );
@@ -93,7 +93,7 @@ $(document).on('click', '#add-btn', function() {
     clearForm();
     $('#event-card-title').text('Add a New Event');
     $('#event_item_id').html("New Event");
-    $("#event_item_id").closest("form.card").attr("id", "form")
+    $("#event_item_id").closest("form.card").attr("id", "form");
 
     window.selected_row = -1;
     $('form').attr('action', 'index.php?page=add');
