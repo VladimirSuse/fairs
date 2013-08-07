@@ -244,6 +244,7 @@ function generateContactCard($data) {
                 <div class="sixteen columns text-center">
                     <div class="medium btn secondary metro" id='add-contact'><input type="submit" value="Save"></div>  
                 </div>          
+
             </div>
         </div>    
     </form>

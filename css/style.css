@@ -35,10 +35,8 @@ table.dataTable thead th {
 
 td, th {
     padding: 8px 10px;
-}
+    max-width: 400px;
 
-td[itemprop$=purchased] {
-    min-width: 10em;
 }
 
 td p {
@@ -46,6 +44,7 @@ td p {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    width: inherit;
 }
 
 tbody tr:hover {
@@ -152,7 +151,7 @@ form fieldset {
 
 #mainTable {
     border-bottom: 1px SOLID #888;
-    width: 100%;
+    max-width: 100%;
     opacity: 0;
 }
 
@@ -170,11 +169,11 @@ form fieldset {
 }
 
 #mainTable_info {
-    width: 82%;
+    width: 65%;
 }
 
 #mainTable_paginate {
-    width: 18%;
+    width: 35%;
 }
 
 #mainTable_filter, #mainTable_paginate {
@@ -244,33 +243,13 @@ table.dataTable tr.odd, table.dataTable tr.odd td.sorting_1, table.dataTable tr.
     padding: 10px;
 }
 
-#hiddenDD {
-    position: relative;
-    z-index: 5;
-    background-color: #f2f2f2;
-    display: none;
-    width: 10em;
-    right: 7.45em;
-    top: 0.093749em;
-    
-}
-
 form {
     padding: 10px;
 }
 
-#oriCard, #contactCard{
+#oriCard, #contactCard, #employerCard{
     position: relative;
     opacity: 0;
-}
-
-#overlay {
-    background: rgba(0,0,0,0.1);
-    display: none;
-    width: 100%; 
-    position: absolute; 
-    top: 10px;
-    z-index:10;
 }
 
 #add-employer{

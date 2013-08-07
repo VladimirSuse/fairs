@@ -4,7 +4,8 @@ $(function() {
 	initializePage();
 
     $("#mainTable").animate({opacity: "1"}, 1000);
-    $("#oriCard").animate({opacity: "1"}, 1000);
+    $("#mainTable tr:first-child").click();
+
 
 	$('.buttonset').buttonset().fadeIn();
 
@@ -66,11 +67,30 @@ function highlightSelectedRow() {
 
 function clearForm() {
     $('.card-value').val('');
-    $('#updated_on').text('');
-    $('#item_id').text('New');
 }
 
 function showMessage(message) {
     $('#message p').text(message);
     $('#message').animate({top: '10px', opacity: '1.0'}, 300, 'easeOutCubic').delay(1000).animate({top: '-35px', opacity: '0.0'}, 300, 'easeOutCubic');
+}
+
+function populateEventCard(e) {
+    $('#event-card-title').closest("form.card").attr("id", "form" + e.id);
+    $('#event-card-title').html("Event Card");
+    $('#event_item_id').html("Event " + e.id);
+    $('#event_id').val(e.id);
+    $('#event_old_id').val(e.old_id);
+    $('#event_name_en').val(e.name_en);
+    $('#event_name_fr').val(e.name_fr);
+    $('#event_publish').val(e.publish);
+    $('#event_price').val(e.price);
+    $('#event_location_en').val(e.location_en);
+    $('#event_location_fr').val(e.location_fr);
+    $('#event_start_date').val(e.start_date);
+    $('#event_end_date').val(e.end_date);
+    $('#event_website_en').val(e.website_en);
+    $('#event_website_fr').val(e.website_fr);
+    $('#event_capacity').val(e.capacity);
+    $('#event_description_en').val(e.description_en);
+    $('#event_description_fr').val(e.description_fr);
 }
