@@ -14,6 +14,18 @@ function initializePage() {
         }
         
     });
+    $('#eventTable').dataTable({
+        "iDisplayLength": 10,
+        "aaSorting": [[0, "asc"]],
+        "aLengthMenu":[
+            [25, 50, 100, -1],
+            [25, 50, 100, "All"]
+        ],
+        "fnDrawCallback": function() {
+            highlightSelectedRow();
+        }
+        
+    });
 
     $('#mainTable_filter').addClass('field');
     $('#mainTable_filter input').addClass('normal search input');
@@ -85,10 +97,13 @@ function populate() {
                 (data['emp_contacts'][0] !== undefined ? cardPopulate(data['emp_contacts'][0],'contact') : '');
                 if(data['events'][0] !== undefined){
                     cardPopulate(data['events'][0],'event');
+                    $('#no-events').fadeOut();
                     $('#form').fadeIn();
+
                 }
                 else{ 
                     $('#form').fadeOut();
+                    $('#no-events').fadeIn();
                 }   
                 $.each(data['emp_contacts'], function(){
                     $('#contacts-select').append('<option id="' + this.id + '">' +this.first_name + ' ' + this.last_name + '</option>');

@@ -281,4 +281,16 @@ form {
 
 #employerTableDiv {
     display: none;
+    height:68.6em;
+}
+#eventTable-container{
+    display:none;
+}
+#no-events{
+    display:none;
+    margin-top:30em
+}
+#no-events p{
+    font-weight:bold;
+    text-align:center;
 }
