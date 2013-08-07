@@ -3,7 +3,7 @@
 </table>
 </div>
 <div class="five columns">
-    <div class="row card" id="oriCard">
+    <div class="row card" id="employeriCard">
         <?php
             generateEmployerCard(array());   
         ?> 
@@ -15,6 +15,6 @@
 </div>                          
 <div class="five columns card" id="eventCard">
     <?php require "../event/view.php" ?>
-            <?php  generateCard(array()) ?>       
+            <?php  generateEventCard(array()) ?>       
 </div>    
 </div>

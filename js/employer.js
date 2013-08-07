@@ -97,6 +97,7 @@ function populate() {
                 $('.chosen').chosen();
                 $('.chosen').trigger('liszt:updated');
                 $('.buttonset').buttonset();
+                $('#employerCard').animate({opacity: "1"}, 1000);
                 $('#contactCard').animate({opacity: "1"}, 1000);
             }
         });
@@ -132,19 +133,19 @@ function cardPopulate(data, cardType){
     }
     else if(cardType == "event"){
         $('#event_id').val(data.id);
-        $('#publish').val(data.publish);
-        $('#old_id').val(data.old_id);
-        $('#name_en').val(data.name_en);
-        $('#name_fr').val(data.name_fr);
-        $('#price').val(data.price);
-        $('#location_en').val(data.location_en);
-        $('#location_fr').val(data.location_fr);
-        $('#start_date').val(data.start_date);
-        $('#website_en').val(data.website_en);
-        $('#website_fr').val(data.website_fr);
-        $('#capacity').val(data.capacity);
-        $('#description_en').val(data.description_en);
-        $('#description_fr').val(data.description_fr);
+        $('#event_publish').val(data.publish);
+        $('#event_old_id').val(data.old_id);
+        $('#event_name_en').val(data.name_en);
+        $('#event_name_fr').val(data.name_fr);
+        $('#event_price').val(data.price);
+        $('#event_location_en').val(data.location_en);
+        $('#event_location_fr').val(data.location_fr);
+        $('#event_start_date').val(data.start_date);
+        $('#event_website_en').val(data.website_en);
+        $('#event_website_fr').val(data.website_fr);
+        $('#event_capacity').val(data.capacity);
+        $('#event_description_en').val(data.description_en);
+        $('#event_description_fr').val(data.description_fr);
         
     }
     else{
