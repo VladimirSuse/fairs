@@ -5,19 +5,19 @@
 </div>
 </div>
 <div class="five columns">
-    <div id="oriCard">
+    <div class="card" id="oriCard">
         <?php
             generateEventCard();
         ?>
     </div>
 </div>
 <div class="five columns">
-    <div id="employerCard">
+    <div class="card" id="employerCard">
         <?php
             generateEmployerCard();
         ?>
     </div>
-    <div id="contactCard">
+    <div class="card" id="contactCard">
         <?php
             generateContactCard();
         ?>

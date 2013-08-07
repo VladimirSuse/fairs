@@ -3,7 +3,7 @@ function initializePage() {
     populate();
 
     $('#mainTable').dataTable({
-        "iDisplayLength": 25,
+        "iDisplayLength": 14,
         "aaSorting": [[0, "asc"]],
         "aLengthMenu":[
             [25, 50, 100, -1],
@@ -82,6 +82,12 @@ function populate() {
             success: function(data) {
                 populateEventCard(data['event'][0]);
                 $("#oriCard").animate({opacity: "1"}, 1000);
+                $("#employerCard").animate({opacity: "1"}, 1000);
+
+                var empCard = $("#emp_form").remove();
+                // $("#employerCard").dataTable({
+                //     "sAjaxSource": data['employers'][0]
+                // });
             }
         });
 
