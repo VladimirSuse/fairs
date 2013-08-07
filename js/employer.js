@@ -32,7 +32,7 @@ function initializePage() {
         $.ajax({
             type: $('#emp_form').attr('method'),
             dataType:'json',
-            url:"index.php?page=add-edit",
+            url:"index.php?page=add-edit-employer",
             data: $('#emp_form').serialize(),
             success:function(data){
                 
@@ -49,11 +49,10 @@ function initializePage() {
                     $('#contactCard').fadeIn();
                 }
                 else if(data['type'] == 'update'){
-                    var node = $('tr[data_item_id="' + $("#id").val() + '"]')[0];
+                    var node = $('tr[data_item_id="' + $("#employer_id").val() + '"]')[0];
                     var location = $('#mainTable').dataTable().fnGetPosition(node);             
                     $('#mainTable').dataTable().fnUpdate([
-                        "<p>" + $("#org_name_en").val() + "<br/>" + $("#org_name_fr").val() + "</p>",
-                        "<p>" + $("#dep_name_en").val() + "<br/>" + $("#dep_name_fr").val() + "</p>"
+                        "<p>" + $("#employer_org_name_en").val() + "<br/>" + $("#employer_org_name_fr").val() + "</p>"
                         ],
                         location
                     );
@@ -78,22 +77,27 @@ function populate() {
                 //clear the select box
                 $('#contacts-select').empty();
                 //employer card data
-                $('#emp-card-title').html('Viewing Employer');
-                $('#contact-card-title').html('Viewing Employer Contacts');
-                cardPopulate(data['emp_info'][0],'employer');
+                $('#employer-card-title').html('Viewing Employer');
+                $('#contact-card-title').html('Employer Contacts');
+                $('#card-title').html('Viewing Event Registration');
+                (data['emp_info'][0] !== undefined ? cardPopulate(data['emp_info'][0],'employer') : '');
                 //populate with the first contact retrieved
-                cardPopulate(data['emp_contacts'][0],'contact');
+                (data['emp_contacts'][0] !== undefined ? cardPopulate(data['emp_contacts'][0],'contact') : '');
+                if(data['events'][0] !== undefined){
+                    cardPopulate(data['events'][0],'event');
+                    $('#form').fadeIn();
+                }
+                else{ 
+                    $('#form').fadeOut();
+                }   
                 $.each(data['emp_contacts'], function(){
-                    $('#contacts-select').append('<option id="' + this.id + '" data-first_name="' + this.first_name + '" data-last_name="' + this.last_name + '"'+
-                                                      'data-street="' + this.street + '" data-street2="' + this.street2 + '" data-postal_code="' + this.postal_code + '"'+
-                                                      'data-province="' + this.province + '" data-city="' + this.city + '" data-country="' + this.country + '"'+
-                                                      'data-phone="' + this.phone + '" data-extension="' + this.extension + '" data-e-mail="' + this['e-mail'] + 
-                                                      '">' +this.first_name + ' ' + this.last_name + '</option>');
+                    $('#contacts-select').append('<option id="' + this.id + '">' +this.first_name + ' ' + this.last_name + '</option>');
                 });
                 
                 $('.chosen').chosen();
                 $('.chosen').trigger('liszt:updated');
                 $('.buttonset').buttonset();
+                $('#employerCard').animate({opacity: "1"}, 1000);
                 $('#contactCard').animate({opacity: "1"}, 1000);
             }
         });
@@ -102,30 +106,47 @@ function populate() {
 
 //function for populating the employer contact card
 function cardPopulate(data, cardType){
-    if(cardType == "employer"){
-        $('#id').val(data.id);
+    if(cardType == "employer" ){
+        $('#employer_id').val(data.id);
         $('input[type="radio"]').attr('checked','');
-        $('#org_name_en').val(data.org_name_en);
-        $('#org_name_fr').val(data.org_name_fr);
-        $('#dep_name_en').val(data.dep_name_en);
-        $('#dep_name_fr').val(data.dep_name_fr);
-        $('#website_en').val(data.website_en);
-        $('#website_fr').val(data.website_fr);
+        $('#employer_org_name_en').val(data.org_name_en);
+        $('#employer_org_name_fr').val(data.org_name_fr);
+        $('#employer_dep_name_en').val(data.dep_name_en);
+        $('#employer_dep_name_fr').val(data.dep_name_fr);
+        $('#employer_website_en').val(data.website_en);
+        $('#employer_website_fr').val(data.website_fr);
         (data.hst_exempt == 0 ? $('#hst_exempt-no').attr('checked','checked') : $('#hst_exempt-yes').attr('checked','checked'));
         (data.pst_exempt == 0 ? $('#pst_exempt-no').attr('checked','checked') : $('#pst_exempt-yes').attr('checked','checked'));
     }
     else if(cardType =="contact"){
-        $('#first_name').val(data.first_name);
-        $('#last_name').val(data.last_name);
-        $('#street').val(data.street);
-        $('#street2').val(data.street2);
-        $('#postal_code').val(data.postal_code);
-        $('#province').val(data.province);
-        $('#city').val(data.city);
-        $('#country').val(data.country);
-        $('#phone').val(data.phone);
-        $('#extension').val(data.extension);
-        $('#e-mail').val(data['e-mail']);
+        $('#contact_first_name').val(data.first_name);
+        $('#contact_last_name').val(data.last_name);
+        $('#contact_street').val(data.street);
+        $('#contact_street2').val(data.street2);
+        $('#contact_postal_code').val(data.postal_code);
+        $('#contact_province').val(data.province);
+        $('#contact_city').val(data.city);
+        $('#contact_country').val(data.country);
+        $('#contact_phone').val(data.phone);
+        $('#contact_extension').val(data.extension);
+        $('#contact_e-mail').val(data['e-mail']);
+    }
+    else if(cardType == "event"){
+        $('#event_id').val(data.id);
+        $('#event_publish').val(data.publish);
+        $('#event_old_id').val(data.old_id);
+        $('#event_name_en').val(data.name_en);
+        $('#event_name_fr').val(data.name_fr);
+        $('#event_price').val(data.price);
+        $('#event_location_en').val(data.location_en);
+        $('#event_location_fr').val(data.location_fr);
+        $('#event_start_date').val(data.start_date);
+        $('#event_website_en').val(data.website_en);
+        $('#event_website_fr').val(data.website_fr);
+        $('#event_capacity').val(data.capacity);
+        $('#event_description_en').val(data.description_en);
+        $('#event_description_fr').val(data.description_fr);
+        
     }
     else{
         //Display some sort of error

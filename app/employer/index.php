@@ -23,10 +23,15 @@ if (!isset($_GET['page'])) {
     $data = $employer -> getAllEmployer();
     require_once '../template/template.php';
 } elseif ($_GET['page'] == "card") {
-	$data = array('billing_contacts' => $employer->getBillingContact($_POST['id']), 'emp_contacts' => $employer->getDirectContact($_POST['id']), 'emp_info' => $employer->getAllEmployer($_POST['id']));
+	$data = array(
+				  	'billing_contacts' => $employer->getBillingContact($_POST['id']), 
+		          	'emp_contacts' => $employer->getDirectContact($_POST['id']), 
+		          	'events' => $employer -> getEventRegistration($_POST['id']),
+		          	'emp_info' => $employer->getAllEmployer($_POST['id'])
+		         );
 	echo json_encode($data);
 
-} elseif ($_GET['page'] == "add-edit") {
+} elseif ($_GET['page'] == "add-edit-employer") {
 	//edit case
 	if(!empty($_POST['id'])){
 		$affectedRows = $employer->updateEmployer($_POST, $_POST['id']);
