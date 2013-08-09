@@ -12,7 +12,7 @@ require_once '../../includes/Employer.php';
 require '../employer/view.php';
 $employer = new Employer();
 
-$page_title = 'Events';
+$page_title = 'Event';
 $icon = "icon-globe";
 $js_path = "event.js";
 
@@ -49,14 +49,29 @@ if (!isset($_GET['page'])) {
         echo $e->getMessage();
 	}
 } elseif ($_GET['page'] == "employer") {
-	require '../employer/view.php';
-	$allEmp = $employer -> getAllEmployer();
-	$relEmp = $employer -> getEventRegistrationEvent($_GET['id']);
-	generateEmployerCard($data[0]);
-} elseif ($_GET['page'] == "contact") {
-	require '../employer/view.php';
-	$contacts = $employer -> getDirectContact($_GET['id']);
-	generateContactCard($data[0]);
+	$data = array(
+    	'billing_contacts' => $employer->getBillingContact($_GET['id']), 
+      	'emp_contacts' => $employer->getDirectContact($_GET['id']), 
+      	'emp_info' => $employer->getAllEmployer($_GET['id'])
+    );
+	echo json_encode($data);
+
+} elseif ($_GET['page'] == "notRegisteredList") {
+	$data = $employer -> getEmployerWithoutEvent($_GET['id']);
+	echo json_encode($data);
+} elseif ($_GET['page'] == "registeredList") {
+	$data = $employer -> getEventRegistrationEvent($_GET['id']);
+	echo json_encode($data);
+}elseif ($_GET['page'] == "registerEmployer") {
+	$data = array(
+		'career_employer_id' => $_POST['employer_id'],
+		'career_employer_event_id' => $_POST['event_id'],
+		'career_employer_event_service_id' => $_POST['service_id']
+	);
+
+	$returned = $employer -> saveEventRegistrations($data);
+	echo $returned;
+
 } else {
     require_once '../../includes/php/error.php';
 }

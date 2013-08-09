@@ -281,8 +281,8 @@ form {
 
 #employerTableDiv {
     display: none;
-}
-
-#employerTableDiv {
     height: 970px;
+    padding: 0.5rem;
+    overflow: auto;
+
 }
