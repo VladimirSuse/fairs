@@ -3,7 +3,7 @@
 </table>
 </div>
 <div class="five columns">
-    <div class="row card" id="employeriCard">
+    <div class="row card" id="employerCard">
         <?php
             generateEmployerCard(array());   
         ?> 

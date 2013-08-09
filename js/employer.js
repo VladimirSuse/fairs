@@ -1,5 +1,4 @@
 function initializePage() {
-    
     populate();
 
     $('#mainTable').dataTable({
@@ -29,11 +28,6 @@ function initializePage() {
     // The selected_row variable describes which the item_id of the currently selected row, or -1 if no row is selected.
     window.selected_row = -1;
 
-    //listener for editing employer form for existing employer
-    $('.card-value').blur(function(){
-        $('#add-employer').fadeIn();
-    });
-
     //listener add/edit employer form submission
     $('#emp_form').on('submit', function(event){
         event.preventDefault();
@@ -54,8 +48,8 @@ function initializePage() {
                         '</div>'  
                     ]);
                     $('tr:has(div[data-id="' + data['emp_info'][0].id + '"])').attr('data_item_id', data['emp_info'][0].id);
-                    showMessage('Employer was successfully added.'); 
-                    $('#contactCard').fadeIn();
+                    showMessage('Employer was successfully added.');
+                    $("#mainTable tr[data_item_id='"+ data['emp_info'][0].id+"']").trigger("click");
                 }
                 else if(data['type'] == 'update'){
                     if(data['success'] == "true"){ 
@@ -75,7 +69,6 @@ function initializePage() {
     
     //event handler for when the user clicks add a contact
     $('#add-contacts').on('click', function(e){
-        console.log("here");
         e.preventDefault();
         $('.contact-card-value').val("");
         $('#contacts-select').empty();
@@ -135,35 +128,32 @@ function populate() {
                 }
                 else{ 
                     $('#contact_employer_id').val($('#employer_id').val());
-                    console.log( $('#contact_employer_id').val());
                     $('#contact_form').fadeOut();
                     $('#no-contacts').fadeIn();
                 } 
                 if(data['events'][0] !== undefined){
                     cardPopulate(data['events'][0],'event');
-                    $('#no-events').fadeOut();
-                    $('#form').fadeIn();
-
+                    $('#no-events').hide();
+                    $('#eventTable-container').fadeIn();
                 }
                 else{ 
-                    $('#form').fadeOut();
+                    $('#eventTable-container').hide();
                     $('#no-events').fadeIn();
                 }   
             
                 $('.buttonset').buttonset();
                 $('#employerCard').animate({opacity: "1"}, 1000);
                 $('#contactCard').animate({opacity: "1"}, 1000);
+                $('#eventCard').animate({opacity: "1"}, 1000);
             }
         });
     });
 }
 
 $(document).on('click', '#add-btn', function() {
-    clearForm();
-    $('#card-title').text('Add a New Employer');
-
-    window.selected_row = -1;
-    $('form').attr('action', 'index.php?page=add');
-    highlightSelectedRow();
+    $('#contactCard').animate({opacity: "0"}, 1000);
+    $('#eventCard').animate({opacity: "0"}, 1000);
+    $('.card-value').val('');
+    $('#employer-card-title').text('Add a New Employer');
 });
 

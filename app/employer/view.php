@@ -32,7 +32,7 @@ function generateEmployerCard($data) {
     ?>
     <form method="POST" id="emp_form">
         <div class="row top-bar">
-            <p id="item_id">Employer<?= $data['id']; ?></p>
+            <p class="item_id">Employer</p>
         </div>
         <div class="row">
             <h3><i class="<?= $icon ?>"></i> <span id="employer-card-title">Add New Employer</span></h3>
@@ -116,9 +116,9 @@ function generateEmployerCard($data) {
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row edit-button">
                 <div class="sixteen columns text-center">
-                    <div class="medium btn secondary metro" id='add-employer'><input type="submit" value="Save"></div>  
+                    <div class="medium btn secondary metro" id='save-employer'><input type="submit" value="Save"></div>  
                 </div>          
             </div>
         </div>    
@@ -129,7 +129,7 @@ function generateContactCard($data) {
     ?>
     <form method="POST" id="contact_form">
         <div class="row top-bar">
-            <p id="item_id">Contact<?= $data['id']; ?></p>
+            <p class="item_id">Contact</p>
         </div>
         <div class="row">
             <h3><i class="<?= $icon ?>"></i> <span id="contact-card-title">Add Employer Contact</span></h3>
@@ -240,11 +240,10 @@ function generateContactCard($data) {
                     <input type="text" class="card-value contact-card-value" name="email" id="contact_email">
                 </div>
             </div>
-            <div class="row">
+            <div class="row edit-button">
                 <div class="sixteen columns text-center">
-                    <div class="medium btn secondary metro" id='add-contact'><input type="submit" value="Save"></div>  
+                    <div class="medium btn secondary metro" id='save-contact'><input type="submit" value="Save"></div>  
                 </div>          
-
             </div>
         </div>    
     </form>

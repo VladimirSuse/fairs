@@ -112,7 +112,7 @@ p.card-value {
     padding-left: 5px;
 }
 
-#item_id {
+.item_id {
     position: relative;
     z-index: 3;
 }
@@ -247,7 +247,7 @@ form {
     padding: 10px;
 }
 
-#oriCard, #contactCard, #employerCard{
+#eventCard, #eventCard, #contactCard, #employerCard{
     position: relative;
     opacity: 0;
 }
@@ -276,7 +276,7 @@ form {
     margin-top: 1rem;
 }
 #eventCard {
-    height:67.8em;
+    height:66.7em;
 }
 #contactCard{
     height:35.6em;
@@ -288,8 +288,10 @@ form {
 #eventTable-container{
     display:none;
 }
-#no-contacts{
+#event_form{
     display:none;
+}
+#no-contacts{
     margin-top:15em
 }
 #no-events{
@@ -299,9 +301,6 @@ form {
 #no-events p, #no-contacts p{
     font-weight:bold;
     text-align:center;
-    height: 970px;
-    padding: 0.5rem;
-    overflow: auto;
 }
 #left-panel{
     overflow-y:scroll;

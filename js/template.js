@@ -5,8 +5,6 @@ $(function() {
 
     $("#mainTable").animate({opacity: "1"}, 1000);
     $("#mainTable tr:first-child").click();
-
-
 	$('.buttonset').buttonset().fadeIn();
 
 	$(document).on('mouseenter', '#mainTable tr', function() {
