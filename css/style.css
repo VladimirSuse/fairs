@@ -275,7 +275,7 @@ form {
 #saveRow {
     margin-top: 1rem;
 }
-#eventCard{
+#eventCard {
     height:67.8em;
 }
 #contactCard{
@@ -299,4 +299,7 @@ form {
 #no-events p, #no-contacts p{
     font-weight:bold;
     text-align:center;
+    height: 970px;
+    padding: 0.5rem;
+    overflow: auto;
 }

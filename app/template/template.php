@@ -55,10 +55,10 @@ include 'view.php';
                 <div class="five columns" id="left-panel">
                     <div class="row">
                         <div class="seven columns">
-                            <h2 id="pageTitle"><i class="<?= $icon ?>"></i> <?= $page_title; ?></h2>
+                            <h2 id="pageTitle"><i class="<?= $icon ?>"></i> <?= $page_title; ?>s</h2>
                         </div>
                         <div class="nine columns" style="text-align: right; padding-top: 20px;">
-                            <div class="medium btn secondary metro" id="add-btn"><a><i class="icon-plus-squared"></i>Add <?= $page_title; ?></a></div>                        
+                            <div class="small btn secondary metro"><input id="add-btn" type="submit" value="Add New <?= $page_title; ?>"></div>                        
                         </div>
                     </div>
                     <?php 
@@ -68,7 +68,7 @@ include 'view.php';
                             case "Employers": 
                                 require "template-employer.php";
                                 break;
-                            case "Events": 
+                            case "Event": 
                                 require "template-event.php";
                                 break;
 

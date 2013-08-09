@@ -23,7 +23,7 @@ function generateEventRow($r) {
 
 function generateEventCard() {
 ?>
-    <form method="POST" id="form">
+    <form method="POST" id="event_form">
         <div class="row top-bar">
             <p id="event_item_id"> New Event</p>
         </div>
@@ -154,30 +154,6 @@ function generateEventCard() {
             </div>  
         </div>
     </form>
-<?php
-}
-
-function generateRegisteredEmployerTable($data) {
-?>
-
-    <thead>
-        <th>Name</th>
-    </thead>
-    <tbody>
-        <?php 
-        foreach ($data as $r): ?>
-        <tr data_item_id="<?= $r['id'] ?>">
-            <?php generateRegisteredEmployerRow($r); ?>
-        </tr>
-        <?php endforeach; ?>
-    </tbody>
-
-<?php
-}
-
-function generateRegisteredEmployerRow($r) {
-?>    
-    <td itemprop="org_name"><p><?= htmlspecialchars($r['org_name_en']) . "<br/>" . htmlspecialchars($r['org_name_fr']); ?></p></td>
 <?php
 }
 ?>

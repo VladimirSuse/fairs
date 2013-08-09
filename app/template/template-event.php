@@ -14,8 +14,8 @@
 <div class="five columns">
     <div class="card" id="employerCard">
         <div id="employerTableDiv">
-            <h3>Registered Employers</h3>
-            <table id="employerTable">
+            <h3 id="employerTableDivTitle">Registered Employer(s)</h3>
+            <table id="employerTable" data="true">
                 <thead>
                     <th>Name</th>
                 </thead>
@@ -24,9 +24,11 @@
                 </tbody>
             </table>
         </div>
-        <?php
-            generateEmployerCard(array());
-        ?>
+        <div id="employerInfo">
+            <?php
+                generateEmployerCard(array());
+            ?>
+        </div>
     </div>
     <div class="card" id="contactCard">
         <?php
