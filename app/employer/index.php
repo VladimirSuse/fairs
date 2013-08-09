@@ -42,14 +42,17 @@ if (!isset($_GET['page'])) {
 			echo json_encode(array('type' => 'add','emp_info' => $employer->getAllEmployer($id)));
 	}	
 } elseif ($_GET['page'] == "add-edit-contact") {
+		$id = $_POST['career_employer_id'];
+		unset($_POST['career_employer_id']);
 	//edit case
-	if(!empty($_POST['id'])){
+	if(!empty($_POST['id'])){;
 		echo ($affectedRows = $employer->updateContactDetail($_POST, $_POST['id']) > 0 ? json_encode(array('type' => 'update','success' => 'true')) : json_encode(array('type' => 'update','success' => 'false')));
 	}
 	else{
-		$id = $employer->saveDirectContact($_POST, $_POST['id']);
-		if(!is_null($id))
-			echo json_encode(array('type' => 'add','contact_info' => $employer->getDirectContact($id)));
+		unset($_POST['id']);
+		$returned = $employer->saveDirectContact($_POST, $id);
+		if(!is_null($returned))
+			echo json_encode(array('type' => 'add','emp_contacts' => $employer->getDirectContact($id)));
 	}	
 } elseif ($_GET['page'] == "contact") {
 	# action = add/del or edit

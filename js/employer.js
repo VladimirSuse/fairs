@@ -3,12 +3,8 @@ function initializePage() {
     populate();
 
     $('#mainTable').dataTable({
-        "iDisplayLength": 25,
+        "iDisplayLength": -1,
         "aaSorting": [[0, "asc"]],
-        "aLengthMenu":[
-            [25, 50, 100, -1],
-            [25, 50, 100, "All"]
-        ],
         "fnDrawCallback": function() {
             highlightSelectedRow();
         }
@@ -51,7 +47,7 @@ function initializePage() {
                 if(data['type'] == 'add'){
                     $('#mainTable').dataTable().fnAddData([
                         '<p>' + data['emp_info'][0].org_name_en + '<br>' + data['emp_info'][0].org_name_fr + '</p>',
-                        '<p>' + data[0].dep_name_en + '<br>' + data[0].dep_name_fr +
+                        '<p>' + data['emp_info'][0].dep_name_en + '<br>' + data['emp_info'][0].dep_name_fr +
                         '<div data-id="' + data['emp_info'][0].id + '" style="display:none">'+
                             '<p itemprop="' + data['emp_info'][0].website_en + '">' + data['emp_info'][0].website_en + '</p>'+
                             '<p itemprop="' + data['emp_info'][0].website_fr + '">' + data['emp_info'][0].website_fr + '</p>'+
@@ -99,7 +95,9 @@ function initializePage() {
             data: $('#contact_form').serialize(),
             success:function(data){
                 if(data['type'] == 'add'){
-                     showMessage('Employer contact was successfully added.');  
+                    showMessage('Employer contact was successfully added.');  
+                    listContacts(data['emp_contacts']);
+                    $('#contacts-list').fadeIn();
                 }
                 else if(data['type'] == 'update'){
                     if(data['success'] == "true"){ 
@@ -123,8 +121,6 @@ function populate() {
             url:'index.php?page=card',
             data: 'id='+window.selected_row,
             success:function(data){
-                //clear the select box
-                $('#contacts-select').empty();
                 //employer card data
                 $('#employer-card-title').html('Viewing Employer');
                 $('#contact-card-title').html('Employer Contacts');
@@ -135,8 +131,11 @@ function populate() {
                     cardPopulate(data['emp_contacts'][0],'contact');
                     $('#no-contacts').fadeOut();
                     $('#contact_form').fadeIn();
+                    listContacts(data['emp_contacts']);
                 }
                 else{ 
+                    $('#contact_employer_id').val($('#employer_id').val());
+                    console.log( $('#contact_employer_id').val());
                     $('#contact_form').fadeOut();
                     $('#no-contacts').fadeIn();
                 } 
@@ -150,12 +149,7 @@ function populate() {
                     $('#form').fadeOut();
                     $('#no-events').fadeIn();
                 }   
-                $.each(data['emp_contacts'], function(){
-                    $('#contacts-select').append('<option id="' + this.id + '">' +this.first_name + ' ' + this.last_name + '</option>');
-                });
-                
-                $('.chosen').chosen();
-                $('.chosen').trigger('liszt:updated');
+            
                 $('.buttonset').buttonset();
                 $('#employerCard').animate({opacity: "1"}, 1000);
                 $('#contactCard').animate({opacity: "1"}, 1000);
@@ -172,3 +166,4 @@ $(document).on('click', '#add-btn', function() {
     $('form').attr('action', 'index.php?page=add');
     highlightSelectedRow();
 });
+

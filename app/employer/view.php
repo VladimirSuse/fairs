@@ -148,6 +148,11 @@ function generateContactCard($data) {
                 </div>
             </div>
             <div class="row">
+                <div class="seven columns">
+                    <input type="hidden" class="card-value" name="career_employer_id" id="contact_employer_id">
+                </div>
+            </div>
+            <div class="row">
                 <div class="nine columns">
                     <label for="first_name" class="card-label">First Name</label>
                 </div>
@@ -229,10 +234,10 @@ function generateContactCard($data) {
             </div>
             <div class="row">
                 <div class="nine columns">
-                    <label for="e-mail" class="card-label">Email</label>
+                    <label for="email" class="card-label">Email</label>
                 </div>
                 <div class="seven columns">
-                    <input type="text" class="card-value contact-card-value" name="e-mail" id="contact_e-mail">
+                    <input type="text" class="card-value contact-card-value" name="email" id="contact_email">
                 </div>
             </div>
             <div class="row">

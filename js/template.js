@@ -69,6 +69,15 @@ function highlightSelectedRow() {
 //     $('.card-value').val('');
 // }
 
+function listContacts(data){
+    $('#contacts-select').empty();
+    $.each(data, function(){
+        $('#contacts-select').append('<option id="' + this.career_employer_id + '">' +this.first_name + ' ' + this.last_name + '</option>');
+    });
+    $('.chosen').chosen();
+    $('.chosen').trigger('liszt:updated');
+}
+
 function showMessage(message) {
     $('#message p').text(message);
     $('#message').animate({top: '10px', opacity: '1.0'}, 300, 'easeOutCubic').delay(1000).animate({top: '-35px', opacity: '0.0'}, 300, 'easeOutCubic');
@@ -100,7 +109,8 @@ function cardPopulate(data, cardType){
         $('#contact_country').val(data.country);
         $('#contact_phone').val(data.phone);
         $('#contact_extension').val(data.extension);
-        $('#contact_e-mail').val(data['e-mail']);
+        $('#contact_email').val(data.email);
+        $('#contact_employer_id').val($('#employer_id').val());
     }
     else if(cardType == "event"){
         $('#event-card-title').closest("form.card").attr("id", "form" + data.id);

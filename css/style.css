@@ -303,3 +303,8 @@ form {
     padding: 0.5rem;
     overflow: auto;
 }
+#left-panel{
+    overflow-y:scroll;
+    height:68em;
+    padding-right:1em;
+}
