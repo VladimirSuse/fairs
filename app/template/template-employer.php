@@ -20,13 +20,23 @@
     </div>
 </div>                          
 <div class="five columns card" id="eventCard">
+        <div class="row top-bar">
+            <p class="item_id">Event</p> 
+        </div>
+        
     <?php require "../event/view.php" ?>
             <?php  generateEventCard(array()) ?>     
-    
-    <div  class="row" id="eventTable-container">        
+    <div class="row">
+    </div>
+    <div style="width:95%;margin-top:1em" class="row" id="eventTable-container">        
+        <h3>Registered events for:</h3>
+        <div id="employee-title-name"></div>
+        <div class="small btn secondary metro toggle-events" id="view-unregistered-events" style="display:inline-block;float:right;margin-right:1px;margin-top:1px"><a href="#">View Unregistered Events</a></div>
+         <div class="small btn secondary metro toggle-events" id="view-registered-events" style="display:inline-block;float:right;margin-right:1px;margin-top:1px;display:none"><a href="#">View Registered Events</a></div>
         <table id="eventTable">
             <thead>
                 <th>Event</th>
+                <th>Date</th>
             </thead>
             <tbody>
             </tbody>    

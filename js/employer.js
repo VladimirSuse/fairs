@@ -4,6 +4,7 @@ function initializePage() {
     $('#mainTable').dataTable({
         "iDisplayLength": -1,
         "aaSorting": [[0, "asc"]],
+        "sDom": 'frt',
         "fnDrawCallback": function() {
             highlightSelectedRow();
         }
@@ -12,6 +13,7 @@ function initializePage() {
     $('#eventTable').dataTable({
         "iDisplayLength": 10,
         "aaSorting": [[0, "asc"]],
+        "sDom": 'frt',
         "aLengthMenu":[
             [25, 50, 100, -1],
             [25, 50, 100, "All"]
@@ -37,12 +39,12 @@ function initializePage() {
             url:"index.php?page=add-edit-employer",
             data: $('#emp_form').serialize(),
             success:function(data){
-                
+                console.log(data['emp_info']);
                 if(data['type'] == 'add'){
                     $('#mainTable').dataTable().fnAddData([
-                        '<p>' + data['emp_info'][0].org_name_en + '<br>' + data['emp_info'][0].org_name_fr + '</p>',
-                        '<p>' + data['emp_info'][0].dep_name_en + '<br>' + data['emp_info'][0].dep_name_fr +
+                        '<p>' + data['emp_info'][0].org_name_en + '<br>' + data['emp_info'][0].org_name_fr + '</p>'+
                         '<div data-id="' + data['emp_info'][0].id + '" style="display:none">'+
+                            '<p itemprop="' + data['emp_info'][0].dep_name_en + '">' + data['emp_info'][0].dep_name_fr + '</p>'+
                             '<p itemprop="' + data['emp_info'][0].website_en + '">' + data['emp_info'][0].website_en + '</p>'+
                             '<p itemprop="' + data['emp_info'][0].website_fr + '">' + data['emp_info'][0].website_fr + '</p>'+
                         '</div>'  
@@ -78,6 +80,29 @@ function initializePage() {
 
     });
 
+    //listener for when the user cllicks view registered/unergistered events
+    $(".toggle-events").on("click", function(){
+        $(this).hide();
+        if(this).attr('id') == "view-registered-events"){ 
+            $('#view-unregistered-events').show();
+            $("#mainTable tr[data_item_id='"+ $("#employer_id").attr('data_item_id')+"']").trigger("click");
+        }
+        else{
+            $('#eventTable').hide();
+            $.ajax({
+                type:'post',
+                dataType:'json',
+                url:'index.php?page=get-unregistered-events',
+                data:'id=' + $("#employer_id").attr('data_item_id'),
+                success: function(data){
+                    eventListTable(data['events']);
+                    $('#view-registered-events').show();
+                    $('#eventTable').fadeIn();
+                }
+            });
+        }
+    });
+
     //listener add/edit contact form submission
     $('#contact_form').on('submit', function(event){
         event.preventDefault();
@@ -108,6 +133,8 @@ function populate() {
     $(document).on('click', 'tbody tr', function(e) {
         window.selected_row = $(this).attr('data_item_id');
         highlightSelectedRow();
+        if($('#save-employer input').val() == "Add employer")
+            $('#save-employer input').val('Save changes');
         $.ajax({
             type:'post',
             dataType:'json',
@@ -132,7 +159,8 @@ function populate() {
                     $('#no-contacts').fadeIn();
                 } 
                 if(data['events'][0] !== undefined){
-                    cardPopulate(data['events'][0],'event');
+                    $('#employee-title-name').html(data['emp_info'][0].org_name_en);
+                    eventListTable(data['events']);
                     $('#no-events').hide();
                     $('#eventTable-container').fadeIn();
                 }
@@ -151,9 +179,34 @@ function populate() {
 }
 
 $(document).on('click', '#add-btn', function() {
-    $('#contactCard').animate({opacity: "0"}, 1000);
-    $('#eventCard').animate({opacity: "0"}, 1000);
+    $('#contactCard').animate({opacity: "0"}, 500);
+    $('#eventCard').animate({opacity: "0"}, 500);
+    $('#save-employer input').val('Add employer');
     $('.card-value').val('');
     $('#employer-card-title').text('Add a New Employer');
 });
+
+//populates the list of employers based on the selected event
+function eventListTable(data) {
+    $("#eventTable").dataTable().fnClearTable();
+    if(data.length > 0) {
+        $.each(data, function() {
+            console.log(data);
+            $("#eventTable").dataTable().fnAddData( [
+                '<p>' + this.name_en + '<br>' + this.name_fr + '</p>' +
+                '<div data-id="' + this.id + '" style="display:none">'+
+                    '<p itemprop="' + this.capacity + '">' + this.capacity + '</p>'+
+                    '<p itemprop="' + this.dep_name_en + '">' + this.dep_name_en + '</p>'+
+                    '<p itemprop="' + this.dep_name_fr + '">' + this.dep_name_fr + '</p>'+
+                    '<p itemprop="' + this.location_en + '">' + this.location_en + '</p>'+
+                    '<p itemprop="' + this.location_fr + '">' + this.location_fr + '</p>'+
+                    '<p itemprop="' + this.website_en + '">' + this.website_en + '</p>'+
+                    '<p itemprop="' + this.website_fr + '">' + this.website_fr + '</p>'+
+                '</div>',
+                this.end_date
+            ]);
+            $('tr:has(div[data-id="' + this.id + '"])').attr('data_item_id', this.id);   
+        });
+    }
+}
 

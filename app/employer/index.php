@@ -54,8 +54,8 @@ if (!isset($_GET['page'])) {
 		if(!is_null($returned))
 			echo json_encode(array('type' => 'add','emp_contacts' => $employer->getDirectContact($id)));
 	}	
-} elseif ($_GET['page'] == "contact") {
-	# action = add/del or edit
+} else if($_GET['page'] == "get-unregistered-events"){
+	$rows = $employer -> getEventRegistrationEmployer($_POST['id']);	
 } else {
     require_once '../../includes/php/error.php';
 }

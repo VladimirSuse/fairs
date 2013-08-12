@@ -163,7 +163,7 @@ form fieldset {
     margin-top: 5px;
 }
 
-#mainTable_length, #mainTable_filter, #mainTable_info, #mainTable_paginate {
+#mainTable_length, #mainTable_info, #mainTable_paginate {
     float: left;
     width: 50%;
 }
@@ -187,7 +187,9 @@ form fieldset {
 table.dataTable tr.odd, table.dataTable tr.odd td.sorting_1, table.dataTable tr.even, table.dataTable tr.even td.sorting_1 {
     background-color: rgba(0, 0, 0, 0);
 }
-
+.dataTables_filter_field{
+    text:right;
+}
 .top-bar {
     margin-top: 0px;
     top: 0px;
@@ -306,4 +308,8 @@ form {
     overflow-y:scroll;
     height:68em;
     padding-right:1em;
+}
+#employee-title-name{
+    font-weight:bold;
+    text-align:center;
 }

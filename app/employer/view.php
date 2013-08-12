@@ -118,7 +118,7 @@ function generateEmployerCard($data) {
             </div>
             <div class="row edit-button">
                 <div class="sixteen columns text-center">
-                    <div class="medium btn secondary metro" id='save-employer'><input type="submit" value="Save"></div>  
+                    <div class="medium btn secondary metro" id='save-employer'><input type="submit" value="Save changes"></div>  
                 </div>          
             </div>
         </div>    
@@ -242,7 +242,7 @@ function generateContactCard($data) {
             </div>
             <div class="row edit-button">
                 <div class="sixteen columns text-center">
-                    <div class="medium btn secondary metro" id='save-contact'><input type="submit" value="Save"></div>  
+                    <div class="medium btn secondary metro" id='save-contact'><input type="submit" value="Save changes"></div>  
                 </div>          
             </div>
         </div>    
