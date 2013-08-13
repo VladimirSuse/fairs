@@ -54,8 +54,17 @@ if (!isset($_GET['page'])) {
 		if(!is_null($returned))
 			echo json_encode(array('type' => 'add','emp_contacts' => $employer->getDirectContact($id)));
 	}	
-} else if($_GET['page'] == "get-unregistered-events"){
-	$rows = $employer -> getEventRegistrationEmployer($_POST['id']);	
+} elseif($_GET['page'] == "get-unregistered-events"){
+	$empRegistrations = $employer -> getEventRegistrationEmployer($_POST['id']);
+	$events = $employer -> getEvent();
+	$returned = array();
+	foreach($empRegistrations as $reg){
+		foreach($events as $key=>$ev){
+			if($reg['career_employer_event_id'] == $ev['id']){
+				unset($events[$key]);
+		}
+	}
+	echo json_encode($events);	
 } else {
     require_once '../../includes/php/error.php';
 }
