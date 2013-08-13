@@ -57,10 +57,9 @@ if (!isset($_GET['page'])) {
 } elseif($_GET['page'] == "get-unregistered-events"){
 	$empRegistrations = $employer -> getEventRegistrationEmployer($_POST['id']);
 	$events = $employer -> getEvent();
-	$returned = array();
 	foreach($empRegistrations as $reg){
 		foreach($events as $key=>$ev){
-			if($reg['career_employer_event_id'] == $ev['id']){
+			if($reg['career_employer_event_id'] == $ev['id'])
 				unset($events[$key]);
 		}
 	}

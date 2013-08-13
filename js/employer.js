@@ -188,21 +188,19 @@ $(document).on('click', '#add-btn', function() {
 //populates the list of employers based on the selected event
 function eventListTable(data) {
     $("#eventTable").dataTable().fnClearTable();
-    if(data.length > 0) {
-        $.each(data, function() {
-            $("#eventTable").dataTable().fnAddData( [
-                '<p>' + this.name_en + '<br>' + this.name_fr + '</p>' +
-                '<div data-id="' + this.id + '" style="display:none">'+
-                    '<p itemprop="' + this.capacity + '">' + this.capacity + '</p>'+
-                    '<p itemprop="' + this.location_en + '">' + this.location_en + '</p>'+
-                    '<p itemprop="' + this.location_fr + '">' + this.location_fr + '</p>'+
-                    '<p itemprop="' + this.website_en + '">' + this.website_en + '</p>'+
-                    '<p itemprop="' + this.website_fr + '">' + this.website_fr + '</p>'+
-                '</div>',
-                this.start_date
-            ]);
-            $('tr:has(div[data-id="' + this.id + '"])').attr('data_item_id', this.id);   
-        });
-    }
+    $.each(data, function() {
+        $("#eventTable").dataTable().fnAddData( [
+            '<p>' + this.name_en + '<br>' + this.name_fr + '</p>' +
+            '<div data-id="' + this.id + '" style="display:none">'+
+                '<p itemprop="' + this.capacity + '">' + this.capacity + '</p>'+
+                '<p itemprop="' + this.location_en + '">' + this.location_en + '</p>'+
+                '<p itemprop="' + this.location_fr + '">' + this.location_fr + '</p>'+
+                '<p itemprop="' + this.website_en + '">' + this.website_en + '</p>'+
+                '<p itemprop="' + this.website_fr + '">' + this.website_fr + '</p>'+
+            '</div>',
+            this.start_date
+        ]);
+        $('tr:has(div[data-id="' + this.id + '"])').attr('data_item_id', this.id);   
+    });
 }
 
